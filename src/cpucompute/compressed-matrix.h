@@ -23,7 +23,7 @@
 
 #include "matrix.h"
 
-namespace eesen {
+namespace kaldi {
 
 /// \addtogroup matrix_group
 /// @{
@@ -173,7 +173,7 @@ class CompressedMatrix {
 /// @} end of \addtogroup matrix_group
 
 
-}  // namespace eesen
+}  // namespace kaldi
 
 
 #endif  // CPUCOMPUTE_COMPRESSED_MATRIX_H_

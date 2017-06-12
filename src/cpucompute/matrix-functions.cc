@@ -23,7 +23,7 @@
 
 #include "cpucompute/matrix-functions.h"
 
-namespace eesen {
+namespace kaldi {
 
 template<typename Real> void ComplexFt (const VectorBase<Real> &in,
                                      VectorBase<Real> *out, bool forward) {
@@ -850,6 +850,6 @@ void AddOuterProductPlusMinus<double>(double alpha,
                                       MatrixBase<double> *minus);
 
 
-} // end namespace eesen
+} // end namespace kaldi
 
 

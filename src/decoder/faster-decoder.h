@@ -28,7 +28,7 @@
 #include "decoder/decodable-itf.h"
 #include "lat/kaldi-lattice.h" // for CompactLatticeArc
 
-namespace eesen {
+namespace kaldi {
 
 struct FasterDecoderOptions {
   BaseFloat beam;
@@ -188,7 +188,7 @@ class FasterDecoder {
 };
 
 
-} // end namespace eesen.
+} // end namespace kaldi.
 
 
 #endif

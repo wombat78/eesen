@@ -26,7 +26,7 @@
 #include "net/utils-functions.h"
 #include "gpucompute/cuda-math.h"
 
-namespace eesen {
+namespace kaldi {
 
 class BiLstmParallel : public BiLstm {
 public:
@@ -391,6 +391,6 @@ private:
     std::vector<int> sequence_lengths_;
 
 };
-} // namespace eesen
+} // namespace kaldi
 
 #endif

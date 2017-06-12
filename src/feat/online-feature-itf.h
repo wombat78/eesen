@@ -22,7 +22,7 @@
 #include "base/kaldi-common.h"
 #include "cpucompute/matrix-lib.h"
 
-namespace eesen {
+namespace kaldi {
 /// @ingroup Interfaces
 /// @{
 

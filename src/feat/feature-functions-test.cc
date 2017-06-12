@@ -27,7 +27,7 @@
 
 
 // TODO: some of the other functions should be tested.  
-namespace eesen {
+namespace kaldi {
 
 void UnitTestOnlineCmvn() {
   for (int32 i = 0; i < 1000; i++) {
@@ -98,7 +98,7 @@ void UnitTestOnlineCmvn() {
 
 
 int main() {
-  using namespace eesen;
+  using namespace kaldi;
   try {
     UnitTestOnlineCmvn();
     std::cout << "Tests succeeded.\n";

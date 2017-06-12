@@ -25,7 +25,7 @@
 #include "gpucompute/cuda-matrix.h"
 #include "base/kaldi-math.h"
 
-namespace eesen {
+namespace kaldi {
 
 
 template<typename Real> 

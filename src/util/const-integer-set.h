@@ -38,7 +38,7 @@
      do more work to implement an iterator type.  This would save memory.
   */
 
-namespace eesen {
+namespace kaldi {
 
 template<class I> class ConstIntegerSet {
  public:
@@ -88,7 +88,7 @@ template<class I> class ConstIntegerSet {
   void InitInternal();
 };
 
-} // end namespace eesen
+} // end namespace kaldi
 
 #include "const-integer-set-inl.h"
 

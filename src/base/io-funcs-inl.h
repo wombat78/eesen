@@ -26,7 +26,7 @@
 #include <limits>
 #include <vector>
 
-namespace eesen {
+namespace kaldi {
 
 // Template that covers integers.
 template<class T>  void WriteBasicType(std::ostream &os,
@@ -214,6 +214,6 @@ inline bool InitKaldiInputStream(std::istream &is, bool *binary) {
   }
 }
 
-}  // end namespace eesen.
+}  // end namespace kaldi.
 
 #endif  // KALDI_BASE_IO_FUNCS_INL_H_

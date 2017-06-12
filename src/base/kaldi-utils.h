@@ -33,25 +33,21 @@
 
 #if defined(_MSC_VER)
 #pragma warning(disable: 4244 4056 4305 4800 4267 4996 4756 4661)
+#if _MSC_VER < 1400
 #define __restrict__
+#else
+#define __restrict__ __restrict
+#endif
 #endif
 
-#ifdef HAVE_POSIX_MEMALIGN
+#ifdef _MSC_VER
 #  define KALDI_MEMALIGN(align, size, pp_orig) \
-     (!posix_memalign(pp_orig, align, size) ? *(pp_orig) : NULL)
-#  define KALDI_MEMALIGN_FREE(x) free(x)
-#elif defined(HAVE_MEMALIGN)
-  /* Some systems have memalign() but no declaration for it */
-  void * memalign(size_t align, size_t size);
-#  define KALDI_MEMALIGN(align, size, pp_orig) \
-     (*(pp_orig) = memalign(align, size))
-#  define KALDI_MEMALIGN_FREE(x) free(x)
-#elif defined(_MSC_VER)
-#  define KALDI_MEMALIGN(align, size, pp_orig) \
-  (*(pp_orig) = _aligned_malloc(size, align))
+          (*(pp_orig) = _aligned_malloc(size, align))
 #  define KALDI_MEMALIGN_FREE(x) _aligned_free(x)
 #else
-#error Manual memory alignment is no longer supported
+#  define KALDI_MEMALIGN(align, size, pp_orig) \
+             (!posix_memalign(pp_orig, align, size) ? *(pp_orig) : NULL)
+#  define KALDI_MEMALIGN_FREE(x) free(x)
 #endif
 
 #ifdef __ICC
@@ -67,7 +63,7 @@
 #endif
 
 
-namespace eesen {
+namespace kaldi {
 
 
 // CharToString prints the character in a human-readable form, for debugging.

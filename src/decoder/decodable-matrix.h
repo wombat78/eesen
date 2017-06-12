@@ -26,7 +26,7 @@
 #include "base/kaldi-common.h"
 #include "decoder/decodable-itf.h"
 
-namespace eesen {
+namespace kaldi {
 
 // Yajie deleted the DecodableMatrixScaledMapped class simply because we don't need it 
 // for CTC decoding.
@@ -62,6 +62,6 @@ class DecodableMatrixScaled: public DecodableInterface {
 };
 
 
-}  // namespace eesen
+}  // namespace kaldi
 
 #endif  // KALDI_DECODER_DECODABLE_MATRIX_H_

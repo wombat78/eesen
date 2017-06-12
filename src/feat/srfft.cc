@@ -28,7 +28,7 @@
 #include "feat/srfft.h"
 #include "cpucompute/matrix-functions.h"
 
-namespace eesen {
+namespace kaldi {
 
 
 template<typename Real>
@@ -410,4 +410,4 @@ template class SplitRadixRealFft<float>;
 template class SplitRadixRealFft<double>;
 
 
-} // end namespace eesen
+} // end namespace kaldi

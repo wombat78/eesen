@@ -1245,7 +1245,7 @@ bool DeterminizeLatticePruned(
       if (new_beam < 0.5 * beam) new_beam = 0.5 * beam;
       beam = new_beam;
       if (iter == 0) temp_fst = ifst;
-      eesen::PruneLattice(beam, &temp_fst);
+      kaldi::PruneLattice(beam, &temp_fst);
       KALDI_LOG << "Pruned state-level lattice with beam " << beam
                 << " and retrying determinization with that beam.";
     }
@@ -1300,7 +1300,7 @@ bool DeterminizeLatticePruned(const ExpandedFst<ArcTpl<Weight> > &ifst,
                  << "lattice with new beam " << new_beam << " and retrying.";
       beam = new_beam;
       if (iter == 0) temp_fst = ifst;
-      eesen::PruneLattice(beam, &temp_fst);
+      kaldi::PruneLattice(beam, &temp_fst);
     }
   }
   return false; // Suppress compiler warning; this code is unreachable.
@@ -1391,9 +1391,9 @@ bool DeterminizeLatticePhonePruned(
 }
 
 bool DeterminizeLatticePhonePrunedWrapper(
-    MutableFst<eesen::LatticeArc> *ifst,
+    MutableFst<kaldi::LatticeArc> *ifst,
     double beam,
-    MutableFst<eesen::CompactLatticeArc> *ofst,
+    MutableFst<kaldi::CompactLatticeArc> *ofst,
     DeterminizeLatticePhonePrunedOptions opts) {
   bool ans = true;
   Invert(ifst);
@@ -1405,9 +1405,9 @@ bool DeterminizeLatticePhonePrunedWrapper(
                 << ").";
     }
   }
-  ILabelCompare<eesen::LatticeArc> ilabel_comp;
+  ILabelCompare<kaldi::LatticeArc> ilabel_comp;
   ArcSort(ifst, ilabel_comp);
-  ans = DeterminizeLatticePhonePruned<eesen::LatticeWeight, eesen::int32>(
+  ans = DeterminizeLatticePhonePruned<kaldi::LatticeWeight, kaldi::int32>(
       ifst, beam, ofst, opts);
   Connect(ofst);
   return ans;
@@ -1417,17 +1417,17 @@ bool DeterminizeLatticePhonePrunedWrapper(
 // Note: there are actually four templates, each of which
 // we instantiate for a single type.
 template
-bool DeterminizeLatticePruned<eesen::LatticeWeight>(
-    const ExpandedFst<eesen::LatticeArc> &ifst,
+bool DeterminizeLatticePruned<kaldi::LatticeWeight>(
+    const ExpandedFst<kaldi::LatticeArc> &ifst,
     double prune,
-    MutableFst<eesen::CompactLatticeArc> *ofst, 
+    MutableFst<kaldi::CompactLatticeArc> *ofst, 
     DeterminizeLatticePrunedOptions opts);
 
 template
-bool DeterminizeLatticePruned<eesen::LatticeWeight>(
-    const ExpandedFst<eesen::LatticeArc> &ifst,
+bool DeterminizeLatticePruned<kaldi::LatticeWeight>(
+    const ExpandedFst<kaldi::LatticeArc> &ifst,
     double prune,
-    MutableFst<eesen::LatticeArc> *ofst, 
+    MutableFst<kaldi::LatticeArc> *ofst, 
     DeterminizeLatticePrunedOptions opts);
 
 }

@@ -54,9 +54,9 @@ fstrhocompose 100 a.fst g.fst | fstprint
 
 int main(int argc, char *argv[]) {
   try {
-    using namespace eesen;
+    using namespace kaldi;
     using namespace fst;
-    using eesen::int32;
+    using kaldi::int32;
     /*
       fstrhocompose does composition, but treats the second FST
       specially; the symbol "rho" is taken whenever the

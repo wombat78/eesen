@@ -30,7 +30,7 @@
 
 
 
-namespace eesen {
+namespace kaldi {
 
 class OutputImplBase;  // Forward decl; defined in a .cc file
 class InputImplBase;  // Forward decl; defined in a .cc file
@@ -253,7 +253,7 @@ std::string PrintableWxfilename(std::string wxfilename);
 
 /// @}
 
-}  // end namespace eesen.
+}  // end namespace kaldi.
 
 #include "kaldi-io-inl.h"
 

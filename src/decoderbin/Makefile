@@ -8,7 +8,7 @@ BINFILES = analyze-counts arpa2fst compute-wer decode-faster latgen-faster latti
 OBJFILES =
 
 ADDLIBS = ../lm/lm.a ../decoder/decoder.a ../lat/lat.a \
-	  ../cpucompute/cpucompute.a  ../util/util.a ../base/base.a
+	  ../cpucompute/cpucompute.a  ../util/util.a ../base/base.a ../fstext/fstext.a
 
 
 TESTFILES =

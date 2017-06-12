@@ -1,6 +1,6 @@
 // fstext/push-special.h
 
-// Copyright 2012  Johns Hopkins Universithy (author: Daniel Povey)
+// Copyright 2012-2015  Johns Hopkins University (author: Daniel Povey)
 
 // See ../../COPYING for clarification regarding multiple authors
 //
@@ -34,7 +34,6 @@ namespace fst {
   that the total weight of each state (i.e. the sum of the arc
   probabilities plus the final-prob) is the same for all states.
 */
-
 void PushSpecial(VectorFst<StdArc> *fst,
                  float delta = kDelta);
 

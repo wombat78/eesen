@@ -123,7 +123,7 @@ struct DeterminizeLatticePrunedOptions {
                                      max_states(-1),
                                      max_arcs(-1),
                                      retry_cutoff(0.5) { }
-  void Register (eesen::OptionsItf *po) {
+  void Register (kaldi::OptionsItf *po) {
     po->Register("delta", &delta, "Tolerance used in determinization");
     po->Register("max-mem", &max_mem, "Maximum approximate memory usage in "
                 "determinization (real usage might be many times this)");
@@ -159,7 +159,7 @@ struct DeterminizeLatticePhonePrunedOptions {
                                           phone_determinize(true),
                                           word_determinize(true),
                                           minimize(false) {}
-  void Register (eesen::OptionsItf *po) {
+  void Register (kaldi::OptionsItf *po) {
     po->Register("delta", &delta, "Tolerance used in determinization");
     po->Register("max-mem", &max_mem, "Maximum approximate memory usage in "
                 "determinization (real usage might be many times this).");
@@ -238,9 +238,9 @@ bool DeterminizeLatticePhonePruned(
     output side.
 */
 bool DeterminizeLatticePhonePrunedWrapper(
-    MutableFst<eesen::LatticeArc> *ifst,
+    MutableFst<kaldi::LatticeArc> *ifst,
     double prune,
-    MutableFst<eesen::CompactLatticeArc> *ofst,
+    MutableFst<kaldi::CompactLatticeArc> *ofst,
     DeterminizeLatticePhonePrunedOptions opts
       = DeterminizeLatticePhonePrunedOptions());
 /// @} end "addtogroup fst_extensions"

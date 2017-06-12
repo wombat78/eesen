@@ -24,7 +24,7 @@
 #include "fstext/deterministic-fst.h"
 #include "util/common-utils.h"
 
-namespace eesen {
+namespace kaldi {
 
 // Forward declaration of Auxiliary struct ArpaLine.
 struct ArpaLine;
@@ -235,6 +235,6 @@ bool BuildConstArpaLm(const bool natural_base, const int32 bos_symbol,
                       const std::string& arpa_rxfilename,
                       const std::string& const_arpa_wxfilename);
 
-} // namespace eesen
+} // namespace kaldi
 
 #endif  // KALDI_LM_CONST_ARPA_LM_H_

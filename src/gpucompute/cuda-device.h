@@ -31,7 +31,7 @@
 #include <cuda_runtime_api.h>
 #include "base/kaldi-common.h"
 
-namespace eesen {
+namespace kaldi {
 
 class CuAllocator; // Forward declaration.
 

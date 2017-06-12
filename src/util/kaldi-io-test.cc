@@ -23,7 +23,7 @@
 #include <unistd.h>
 #endif
 
-namespace eesen {
+namespace kaldi {
 
 
 
@@ -298,12 +298,12 @@ void UnitTestIoStandard() {
 
 
 
-}  // end namespace eesen.
+}  // end namespace kaldi.
 
 
 
 int main() {
-  using namespace eesen;
+  using namespace kaldi;
 
   UnitTestIoNew(false);
   UnitTestIoNew(true);

@@ -30,7 +30,7 @@
 #include "fstext/fstext-lib.h"
 #include "lat/kaldi-lattice.h"
 
-namespace eesen {
+namespace kaldi {
 
 /// The implementation of the Minimum Bayes Risk decoding method described in
 ///  "Minimum Bayes Risk decoding and system combination based on a recursion for
@@ -206,6 +206,6 @@ class MinimumBayesRisk {
   };
 };
 
-}  // namespace eesen
+}  // namespace kaldi
 
 #endif  // KALDI_LAT_SAUSAGES_H_

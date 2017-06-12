@@ -33,7 +33,7 @@
 
 #include <iostream>
 
-namespace eesen {
+namespace kaldi {
 
 /**
  * Class TrainableLayer is a Layer which has trainable parameters,
@@ -78,7 +78,7 @@ class TrainableLayer : public Layer {
   NetTrainOptions opts_; 
 };
 
-} // namespace eesen
+} // namespace kaldi
 
 
 #endif

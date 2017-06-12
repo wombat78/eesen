@@ -26,7 +26,7 @@
 #include "util/text-utils.h"
 #include "cpucompute/vector.h"
 
-namespace eesen {
+namespace kaldi {
 
 
 // The Table class uses a Holder class to wrap objects, and make them behave
@@ -200,7 +200,7 @@ template<int kFeatDim=13> class SphinxMatrixHolder;
 /// @} end "addtogroup holders"
 
 
-} // end namespace eesen
+} // end namespace kaldi
 
 #include "kaldi-holder-inl.h"
 

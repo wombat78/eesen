@@ -25,7 +25,7 @@
 #include <sstream>
 #include <iterator>
 
-namespace eesen {
+namespace kaldi {
 
 void CE::Eval(const CuMatrixBase<BaseFloat> &net_out, const std::vector<int32> &target, CuMatrix<BaseFloat> *diff) {
   KALDI_ASSERT(net_out.NumRows() == target.size());

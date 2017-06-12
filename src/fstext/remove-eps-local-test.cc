@@ -36,7 +36,7 @@ template<class Arc> static void TestRemoveEpsLocal() {
   typedef typename Arc::Weight Weight;
 
   VectorFst<Arc> fst;
-  int n_syms = 2 + eesen::Rand() % 5, n_arcs = 5 + eesen::Rand() % 30, n_final = 1 + eesen::Rand()%10;
+  int n_syms = 2 + kaldi::Rand() % 5, n_arcs = 5 + kaldi::Rand() % 30, n_final = 1 + kaldi::Rand()%10;
 
   SymbolTable symtab("my-symbol-table"), *sptr = &symtab;
 
@@ -55,38 +55,34 @@ template<class Arc> static void TestRemoveEpsLocal() {
   fst.AddState();
   int cur_num_states = 1;
   for (int i = 0; i < n_arcs; i++) {
-    StateId src_state = eesen::Rand() % cur_num_states;
+    StateId src_state = kaldi::Rand() % cur_num_states;
     StateId dst_state;
-    if (eesen::RandUniform() < 0.1) dst_state = eesen::Rand() % cur_num_states;
+    if (kaldi::RandUniform() < 0.1) dst_state = kaldi::Rand() % cur_num_states;
     else {
       dst_state = cur_num_states++; fst.AddState();
     }
     Arc arc;
-    if (eesen::RandUniform() < 0.3) arc.ilabel = all_syms[eesen::Rand()%all_syms.size()];
+    if (kaldi::RandUniform() < 0.3) arc.ilabel = all_syms[kaldi::Rand()%all_syms.size()];
     else arc.ilabel = 0;
-    if (eesen::RandUniform() < 0.3) arc.olabel = all_syms[eesen::Rand()%all_syms.size()];
+    if (kaldi::RandUniform() < 0.3) arc.olabel = all_syms[kaldi::Rand()%all_syms.size()];
     else arc.olabel = 0;
-    arc.weight = (Weight) (0 + 0.1*(eesen::Rand() % 5));
+    arc.weight = (Weight) (0 + 0.1*(kaldi::Rand() % 5));
     arc.nextstate = dst_state;
     fst.AddArc(src_state, arc);
   }
   for (int i = 0; i < n_final; i++) {
-    fst.SetFinal(eesen::Rand() % cur_num_states,  (Weight) (0 + 0.1*(eesen::Rand() % 5)));
+    fst.SetFinal(kaldi::Rand() % cur_num_states,  (Weight) (0 + 0.1*(kaldi::Rand() % 5)));
   }
 
-  if (eesen::RandUniform() < 0.8)   fst.SetStart(0);  // usually leads to nicer examples.
-  else fst.SetStart(eesen::Rand() % cur_num_states);
+  if (kaldi::RandUniform() < 0.8)   fst.SetStart(0);  // usually leads to nicer examples.
+  else fst.SetStart(kaldi::Rand() % cur_num_states);
 
   Connect(&fst);
   if (fst.Start() == kNoStateId) return;  // "Connect" made it empty.
 
   std::cout <<" printing after trimming\n";
   {
-#ifdef HAVE_OPENFST_GE_10400
     FstPrinter<Arc> fstprinter(fst, sptr, sptr, NULL, false, true, "\t");
-#else
-    FstPrinter<Arc> fstprinter(fst, sptr, sptr, NULL, false, true);
-#endif
     fstprinter.Print(&std::cout, "standard output");
   }
 
@@ -99,11 +95,7 @@ template<class Arc> static void TestRemoveEpsLocal() {
 
   {
     std::cout << "copy1 = \n";
-#ifdef HAVE_OPENFST_GE_10400
     FstPrinter<Arc> fstprinter(fst_copy1, sptr, sptr, NULL, false, true, "\t");
-#else
-    FstPrinter<Arc> fstprinter(fst_copy1, sptr, sptr, NULL, false, true);
-#endif
     fstprinter.Print(&std::cout, "standard output");
   }
 
@@ -114,7 +106,7 @@ template<class Arc> static void TestRemoveEpsLocal() {
 
   std::cout << "Number of states 0 = "<<num_states_0<<", 1 = "<<num_states_1<<'\n';
 
-  assert(RandEquivalent(fst, fst_copy1, 5/*paths*/, 0.01/*delta*/, eesen::Rand()/*seed*/, 100/*path length-- max?*/));
+  assert(RandEquivalent(fst, fst_copy1, 5/*paths*/, 0.01/*delta*/, kaldi::Rand()/*seed*/, 100/*path length-- max?*/));
 }
 
 
@@ -126,7 +118,7 @@ static void TestRemoveEpsLocalSpecial() {
   typedef LogArc::StateId StateId;
   typedef LogArc Arc;
   VectorFst<LogArc> *logfst = RandFst<LogArc>();
- 
+
   { // Make the FST stochastic.
     for (StateId s = 0; s < logfst->NumStates(); s++) {
       Weight w = logfst->Final(s);
@@ -148,11 +140,7 @@ static void TestRemoveEpsLocalSpecial() {
 #endif
   {
     std::cout << "logfst = \n";
-#ifdef HAVE_OPENFST_GE_10400
     FstPrinter<LogArc> fstprinter(*logfst, NULL, NULL, NULL, false, true, "\t");
-#else
-    FstPrinter<LogArc> fstprinter(*logfst, NULL, NULL, NULL, false, true);
-#endif
     fstprinter.Print(&std::cout, "standard output");
   }
 
@@ -161,17 +149,13 @@ static void TestRemoveEpsLocalSpecial() {
   VectorFst<StdArc> fst_copy(fst);
   RemoveEpsLocalSpecial(&fst);  // removes eps in std-arc but keep stochastic in log-arc
   // make sure equivalent.
-  assert(RandEquivalent(fst, fst_copy, 5/*paths*/, 0.01/*delta*/, eesen::Rand()/*seed*/, 100/*path length-- max?*/));
+  assert(RandEquivalent(fst, fst_copy, 5/*paths*/, 0.01/*delta*/, kaldi::Rand()/*seed*/, 100/*path length-- max?*/));
   VectorFst<LogArc> logfst2;
   Cast(fst, &logfst2);
 
   {
     std::cout << "logfst2 = \n";
-#ifdef HAVE_OPENFST_GE_10400
     FstPrinter<LogArc> fstprinter(logfst2, NULL, NULL, NULL, false, true, "\t");
-#else
-    FstPrinter<LogArc> fstprinter(logfst2, NULL, NULL, NULL, false, true);
-#endif
     fstprinter.Print(&std::cout, "standard output");
   }
   if (ApproxEqual(ShortestDistance(*logfst), ShortestDistance(logfst2))) {
@@ -192,4 +176,3 @@ int main() {
     TestRemoveEpsLocalSpecial();
   }
 }
-

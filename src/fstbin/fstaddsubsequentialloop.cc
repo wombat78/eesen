@@ -25,6 +25,8 @@
 #include "fst/fstlib.h"
 #include "fstext/fstext-utils.h"
 #include "fstext/context-fst.h"
+#include "fstext/kaldi-fst-io.h"
+
 
 
 /* some test  examples:
@@ -34,9 +36,9 @@
 
 int main(int argc, char *argv[]) {
   try {
-    using namespace eesen;
+    using namespace kaldi;
     using namespace fst;
-    using eesen::int32;
+    using kaldi::int32;
 
     const char *usage =
         "Minimizes FST after encoding [this algorithm applicable to all FSTs in tropical semiring]\n"

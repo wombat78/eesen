@@ -26,7 +26,7 @@
 
 int main(int argc, char *argv[]) {
   try {
-    using namespace eesen;
+    using namespace kaldi;
 
     const char *usage =
         "Apply cepstral mean and (optionally) variance normalization\n"
@@ -66,7 +66,7 @@ int main(int argc, char *argv[]) {
     }
     
     
-    eesen::int32 num_done = 0, num_err = 0;
+    kaldi::int32 num_done = 0, num_err = 0;
     
     std::string cmvn_rspecifier_or_rxfilename = po.GetArg(1);
     std::string feat_rspecifier = po.GetArg(2);

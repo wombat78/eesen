@@ -30,7 +30,7 @@
 #include "gpucompute/cuda-matrix.h"
 #include "gpucompute/cuda-vector.h"
 
-namespace eesen {
+namespace kaldi {
 
 struct ClassPriorOptions {
   std::string class_frame_counts;
@@ -68,6 +68,6 @@ class ClassPrior {
   KALDI_DISALLOW_COPY_AND_ASSIGN(ClassPrior);
 };
 
-}  // namespace eesen
+}  // namespace kaldi
 
 #endif  // EESEN_CLASS_PRIOR_H_

@@ -31,7 +31,7 @@
 #include "base/timer.h"
 
 
-namespace eesen {
+namespace kaldi {
 
 std::string ConvertIntToString(const int &number) {
   std::stringstream ss;  // create a stringstream
@@ -526,10 +526,10 @@ static void UnitTestFeatWithKeele() {
   UnitTestDiffSampleRate();
 }
 
-}  // namespace eesen
+}  // namespace kaldi
 
 int main() {
-  using namespace eesen;
+  using namespace kaldi;
 
   SetVerboseLevel(3);
   try {

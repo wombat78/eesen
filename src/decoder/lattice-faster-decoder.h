@@ -37,7 +37,7 @@
 #include "lat/determinize-lattice-pruned.h"
 #include "lat/kaldi-lattice.h"
 
-namespace eesen {
+namespace kaldi {
 
 struct LatticeFasterDecoderConfig {
   BaseFloat beam;
@@ -412,6 +412,6 @@ class LatticeFasterDecoder {
 
 
 
-} // end namespace eesen.
+} // end namespace kaldi.
 
 #endif

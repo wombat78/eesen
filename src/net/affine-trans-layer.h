@@ -28,7 +28,7 @@
 #include "net/utils-functions.h"
 #include "gpucompute/cuda-math.h"
 
-namespace eesen {
+namespace kaldi {
 
 class AffineTransform : public TrainableLayer {
  public:
@@ -181,6 +181,6 @@ class AffineTransform : public TrainableLayer {
   BaseFloat learn_rate_coef_;
 };
 
-} // namespace eesen
+} // namespace kaldi
 
 #endif

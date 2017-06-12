@@ -26,12 +26,12 @@
 #include "util/common-utils.h"
 
 
-namespace eesen {
+namespace kaldi {
 // will import some things above...
 
 typedef fst::LatticeWeightTpl<BaseFloat> LatticeWeight;
 
-// careful: eesen::int32 is not always the same C type as fst::int32
+// careful: kaldi::int32 is not always the same C type as fst::int32
 typedef fst::CompactLatticeWeightTpl<LatticeWeight, int32> CompactLatticeWeight;
 
 typedef fst::CompactLatticeWeightCommonDivisorTpl<LatticeWeight, int32>
@@ -135,6 +135,6 @@ typedef SequentialTableReader<CompactLatticeHolder> SequentialCompactLatticeRead
 typedef RandomAccessTableReader<CompactLatticeHolder> RandomAccessCompactLatticeReader;
 
 
-} // namespace eesen
+} // namespace kaldi
 
 #endif  // KALDI_LAT_KALDI_LATTICE_H_

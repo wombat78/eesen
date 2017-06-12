@@ -25,7 +25,7 @@
 #include "util/kaldi-holder.h"
 #include "cpucompute/matrix-lib.h"
 
-namespace eesen {
+namespace kaldi {
 
 // This header defines typedefs that are specific instantiations of
 // the Table types.
@@ -130,7 +130,7 @@ typedef RandomAccessTableReader<TokenVectorHolder> RandomAccessTokenVectorReader
 // Note: for FST reader/writer, see ../fstext/fstext-utils.h
 // [not done yet].
 
-} // end namespace eesen
+} // end namespace kaldi
 
 
 

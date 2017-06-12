@@ -29,7 +29,7 @@
 #include "cpucompute/vector.h"
 #include "cpucompute/matrix.h"
 
-namespace eesen {
+namespace kaldi {
 
 /// @addtogroup matrix_funcs_misc
 /// @{
@@ -212,7 +212,7 @@ inline void AssertSameDim(const MatrixBase<Real1> &mat1, const MatrixBase<Real2>
 
 /// @} end of "addtogroup matrix_funcs_misc"
 
-} // end namespace eesen
+} // end namespace kaldi
 
 #include "cpucompute/matrix-functions-inl.h"
 

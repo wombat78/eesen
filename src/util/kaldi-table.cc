@@ -20,7 +20,7 @@
 #include "util/kaldi-table.h"
 #include "util/text-utils.h"
 
-namespace eesen {
+namespace kaldi {
 
 
 bool ReadScriptFile(const std::string &rxfilename,
@@ -297,4 +297,4 @@ RspecifierType ClassifyRspecifier(const std::string &rspecifier,
 
 
 
-}  // end namespace eesen
+}  // end namespace kaldi

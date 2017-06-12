@@ -23,7 +23,7 @@
 #include "base/kaldi-common.h"
 #include "util/options-itf.h"
 
-namespace eesen {
+namespace kaldi {
 
 
 struct NetTrainOptions {
@@ -48,6 +48,6 @@ struct NetTrainOptions {
   }
 };
 
-}//namespace eesen
+}//namespace kaldi
 
 #endif

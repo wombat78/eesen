@@ -24,7 +24,7 @@
 
 #include <gpucompute/cuda-device.h>
 
-namespace eesen {
+namespace kaldi {
 
 /// The following class is used to simulate non-const
 /// references to Real, e.g. as returned by the non-const operator ().

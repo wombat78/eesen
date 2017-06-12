@@ -21,7 +21,7 @@
 #include "util/text-utils.h"
 
 
-namespace eesen {
+namespace kaldi {
 
 
 template<class F>
@@ -187,4 +187,4 @@ bool ConvertStringToReal(const std::string &str,
   return true;
 }
 
-}  // end namespace eesen
+}  // end namespace kaldi

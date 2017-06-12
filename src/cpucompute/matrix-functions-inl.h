@@ -25,7 +25,7 @@
 #ifndef CPUCOMPUTE_MATRIX_FUNCTIONS_INL_H_
 #define CPUCOMPUTE_MATRIX_FUNCTIONS_INL_H_
 
-namespace eesen {
+namespace kaldi {
 
 //! ComplexMul implements, inline, the complex multiplication b *= a.
 template<typename Real> inline void ComplexMul(const Real &a_re, const Real &a_im,
@@ -49,7 +49,7 @@ template<typename Real> inline void ComplexImExp(Real x, Real *a_re, Real *a_im)
 }
 
 
-} // end namespace eesen
+} // end namespace kaldi
 
 
 #endif // KALDI_MATRIX_MATRIX_FUNCTIONS_INL_H_

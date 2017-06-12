@@ -20,7 +20,7 @@
 
 #include "feat/cmvn.h"
 
-namespace eesen {
+namespace kaldi {
 
 void InitCmvnStats(int32 dim, Matrix<double> *stats) {
   KALDI_ASSERT(dim > 0);
@@ -132,4 +132,4 @@ void FakeStatsForSomeDims(const std::vector<int32> &dims,
 
 
 
-}  // namespace eesen
+}  // namespace kaldi

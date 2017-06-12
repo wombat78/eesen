@@ -25,7 +25,7 @@
 #include "base/kaldi-common.h"
 #include "cpucompute/matrix-lib.h"
 
-namespace eesen {
+namespace kaldi {
 
 /// This function initializes the matrix to dimension 2 by (dim+1);
 /// 1st "dim" elements of 1st row are mean stats, 1st "dim" elements
@@ -60,6 +60,6 @@ void FakeStatsForSomeDims(const std::vector<int32> &dims,
                           
 
 
-}  // namespace eesen
+}  // namespace kaldi
 
 #endif  // KALDI_TRANSFORM_CMVN_H_

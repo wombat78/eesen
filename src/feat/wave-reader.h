@@ -50,7 +50,7 @@
 #include "cpucompute/matrix.h"
 
 
-namespace eesen {
+namespace kaldi {
 
 /// This class's purpose is to read in Wave files.
 class WaveData {
@@ -156,6 +156,6 @@ class WaveHolder {
 };
 
 
-}  // namespace eesen
+}  // namespace kaldi
 
 #endif  // KALDI_FEAT_WAVE_READER_H_

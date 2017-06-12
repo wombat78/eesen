@@ -24,7 +24,7 @@
 #ifndef CPUCOMPUTE_VECTOR_INL_H_
 #define CPUCOMPUTE_VECTOR_INL_H_ 1
 
-namespace eesen {
+namespace kaldi {
 
 template<typename Real>
 std::ostream & operator << (std::ostream &os, const VectorBase<Real> &rv) {
@@ -53,6 +53,6 @@ template<>
 void VectorBase<double>::AddVec<double>(const double alpha,
                                         const VectorBase<double> &rv);
 
-}  // namespace eesen
+}  // namespace kaldi
 
 #endif  // KALDI_MATRIX_KALDI_VECTOR_INL_H_

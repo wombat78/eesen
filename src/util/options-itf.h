@@ -21,7 +21,7 @@
 #define KALDI_ITF_OPTIONS_ITF_H_ 1
 #include "base/kaldi-common.h"
 
-namespace eesen {
+namespace kaldi {
 
 class OptionsItf {
  public:

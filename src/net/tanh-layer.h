@@ -27,7 +27,7 @@
 #include "gpucompute/cuda-rand.h"
 #include "util/text-utils.h"
 
-namespace eesen {
+namespace kaldi {
 
 class Tanh : public Layer {
  public:
@@ -52,7 +52,7 @@ class Tanh : public Layer {
 
 };
 
-} // namespace eesen
+} // namespace kaldi
 
 #endif
 

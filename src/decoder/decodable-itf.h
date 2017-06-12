@@ -23,7 +23,7 @@
 #define KALDI_ITF_DECODABLE_ITF_H_ 1
 #include "base/kaldi-common.h"
 
-namespace eesen {
+namespace kaldi {
 /// @ingroup Interfaces
 /// @{
 

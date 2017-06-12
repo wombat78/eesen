@@ -24,7 +24,7 @@
 
 int main(int argc, char *argv[]) {
   try {
-    using namespace eesen;
+    using namespace kaldi;
 
     const char *usage =
         "Reads an archive of features and writes a corresponding archive\n"

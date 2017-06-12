@@ -28,9 +28,9 @@
 
 int main(int argc, char *argv[]) {
   try {
-    using namespace eesen;
+    using namespace kaldi;
     using namespace fst;
-    using eesen::int32;
+    using kaldi::int32;
 
     const char *usage =
         "Pushes weights in an FST such that all the states\n"

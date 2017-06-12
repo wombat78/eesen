@@ -25,7 +25,7 @@
 
 int main(int argc, char *argv[]) {
   try {
-    using namespace eesen;
+    using namespace kaldi;
 
     const char *usage =
         "Add deltas (typically to raw mfcc or plp features\n"

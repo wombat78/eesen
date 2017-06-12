@@ -21,7 +21,7 @@
 #include "feat/feature-mfcc.h"
 
 
-namespace eesen {
+namespace kaldi {
 
 Mfcc::Mfcc(const MfccOptions &opts)
     : opts_(opts), feature_window_function_(opts.frame_opts), srfft_(NULL) {
@@ -188,4 +188,4 @@ void Mfcc::ComputeInternal(const VectorBase<BaseFloat> &wave,
 
 
 
-}  // namespace eesen
+}  // namespace kaldi

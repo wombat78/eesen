@@ -32,7 +32,7 @@
 #include "net/layer.h"
 #include "net/trainable-layer.h"
 
-namespace eesen {
+namespace kaldi {
 
 class Net {
  public:
@@ -150,7 +150,7 @@ class Net {
 };
   
 
-} // namespace eesen
+} // namespace kaldi
 
 #endif  // EESEN_NNET_H_
 

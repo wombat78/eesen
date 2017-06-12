@@ -27,7 +27,7 @@
 #include "gpucompute/cuda-rand.h"
 #include "util/text-utils.h"
 
-namespace eesen {
+namespace kaldi {
 
 class Softmax : public Layer {
  public:
@@ -58,7 +58,7 @@ class Softmax : public Layer {
   
 };
 
-} // namespace eesen
+} // namespace kaldi
 
 #endif
 

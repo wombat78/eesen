@@ -21,7 +21,7 @@
 
 #include "feat/resample.h"
 
-using namespace eesen;
+using namespace kaldi;
 
 class TestFunction {
  public:

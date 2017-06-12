@@ -22,7 +22,7 @@
 // Do not include this file directly.  It is to be included
 // by .cc files in this directory.
 
-namespace eesen {
+namespace kaldi {
 #if HAVE_CUDA == 1
 
 inline void cublas_gemm(char transa, char transb, int m, int n,int k, float alpha, const float *A, int lda,const float *B, int ldb, float beta, float *C, int ldc) {
@@ -144,6 +144,6 @@ inline void cuda_scal(int n, double alpha, double *x, int incx) {
 
 #endif
 }
-// namespace eesen
+// namespace kaldi
 
 #endif

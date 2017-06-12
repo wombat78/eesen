@@ -23,7 +23,7 @@
 #include <sstream>
 #include <iterator>
 
-namespace eesen {
+namespace kaldi {
 
 void Ctc::Eval(const CuMatrixBase<BaseFloat> &net_out, const std::vector<int32> &label, CuMatrix<BaseFloat> *diff) {
   diff->Resize(net_out.NumRows(), net_out.NumCols());
@@ -279,4 +279,4 @@ std::string Ctc::Report() {
   return oss.str(); 
 }
 
-} // namespace eesen
+} // namespace kaldi

@@ -33,7 +33,7 @@
 #include "cpucompute/matrix-lib.h"
 #include "util/common-utils.h"
 
-namespace eesen {
+namespace kaldi {
 /// @addtogroup  feat FeatureExtraction
 /// @{
 
@@ -434,5 +434,5 @@ void ComputeAndProcessKaldiPitch(const PitchExtractionOptions &pitch_opts,
 
 
 /// @} End of "addtogroup feat"
-}  // namespace eesen
+}  // namespace kaldi
 #endif  // KALDI_FEAT_PITCH_FUNCTIONS_H_

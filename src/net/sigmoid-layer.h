@@ -27,7 +27,7 @@
 #include "gpucompute/cuda-rand.h"
 #include "util/text-utils.h"
 
-namespace eesen {
+namespace kaldi {
 
 class Sigmoid : public Layer {
  public:
@@ -52,7 +52,7 @@ class Sigmoid : public Layer {
   
 };
 
-} // namespace eesen
+} // namespace kaldi
 
 #endif
 

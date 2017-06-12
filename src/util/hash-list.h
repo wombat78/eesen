@@ -45,7 +45,7 @@
 */
 
 
-namespace eesen {
+namespace kaldi {
 
 template<class I, class T> class HashList {
 
@@ -133,7 +133,7 @@ template<class I, class T> class HashList {
 };
 
 
-} // end namespace eesen
+} // end namespace kaldi
 
 #include "hash-list-inl.h"
 

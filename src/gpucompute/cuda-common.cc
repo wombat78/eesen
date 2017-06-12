@@ -10,7 +10,7 @@
 #include "gpucompute/cuda-device.h"
 #include "gpucompute/cuda-common.h"
 
-namespace eesen {
+namespace kaldi {
 
 #if HAVE_CUDA == 1
 cublasOperation_t KaldiTransToCuTrans(MatrixTransposeType kaldi_trans) {

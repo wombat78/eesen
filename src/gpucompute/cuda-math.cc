@@ -24,7 +24,7 @@
 #include "gpucompute/cuda-device.h"
 #include "gpucompute/cuda-kernels-wrappers.h"
 
-namespace eesen {
+namespace kaldi {
 
 namespace cu {
 
@@ -233,5 +233,5 @@ void Randomize(const CuMatrixBase<double> &src,
 
 } //namespace cu
 
-} //namespace eesen
+} //namespace kaldi
 

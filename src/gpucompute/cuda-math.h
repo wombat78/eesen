@@ -27,7 +27,7 @@
 #include "gpucompute/cuda-device.h"
 #include "base/timer.h"
 
-namespace eesen {
+namespace kaldi {
   
 namespace cu {
  
@@ -75,7 +75,7 @@ void Copy(const CuMatrixBase<Real> &src,
 
 
 } // namespace cu
-} // namespace eesen
+} // namespace kaldi
 
 
 #endif

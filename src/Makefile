@@ -1,31 +1,49 @@
-# This is the top-level Makefile for Eesen.
-# Also see config.mk which supplies options and some rules
+# This is the top-level Makefile for Kaldi.
+# Also see kaldi.mk which supplies options and some rules
 # used by the Makefiles in the subdirectories.
 
 SHELL := /bin/bash
 
+SUBDIRS = base cpucompute decoder decoderbin feat featbin fstbin fstext gpucompute lat lm net netbin util
 
-SUBDIRS = base cpucompute util feat \
-          fstext lm decoder lat gpucompute net \
-          fstbin featbin \
-          netbin decoderbin
+#base matrix util feat tree gmm transform \
+#          fstext hmm lm decoder lat kws cudamatrix nnet \
+#          bin fstbin gmmbin fgmmbin featbin \
+#          nnetbin latbin sgmm2 sgmm2bin nnet2 nnet3 chain nnet3bin nnet2bin kwsbin \
+#          ivector ivectorbin online2 online2bin lmbin chainbin
 
-MEMTESTDIRS = base cpucompute util feat \
-          fstext lm decoder lat net \
-          fstbin featbin \
-          netbin decoderbin
+MEMTESTDIRS = base fstext
+          #fstext hmm lm decoder lat nnet kws chain \
+          #bin fstbin gmmbin fgmmbin featbin \
+          #nnetbin latbin sgmm2 nnet2 nnet3 nnet2bin nnet3bin sgmm2bin kwsbin \
+          #ivector ivectorbin online2 online2bin lmbin
 
-CUDAMEMTESTDIR = gpucompute
+CUDAMEMTESTDIR = cudamatrix
 
 SUBDIRS_LIB = $(filter-out %bin, $(SUBDIRS))
 
+KALDI_SONAME ?= libkaldi.so
 
-include config.mk
+# Optional subdirectories
+EXT_SUBDIRS = online onlinebin  # python-kaldi-decoding
+EXT_SUBDIRS_LIB = $(filter-out %bin, $(EXT_SUBDIRS))
+
+# for EESEN there are no online/online bin directories
+EXT_SUBDIRS = #online onlinebin # python-kaldi-decoding
+EXT_SUBDIRS_LIB = $(filter-out %bin, $(EXT_SUBDIRS))
+
+include kaldi.mk
 
 # Reset the default goal, so that the all target will become default
 .DEFAULT_GOAL :=
-all: checkversion test_dependencies config.mk mklibdir $(SUBDIRS)
+all:
+	$(MAKE) checkversion
+	$(MAKE) kaldi.mk
+	$(MAKE) mklibdir
+	$(MAKE) subdirs
 	-echo Done
+
+subdirs: $(SUBDIRS)
 
 mklibdir:
 	test -d $(KALDILIBDIR) || mkdir $(KALDILIBDIR)
@@ -42,9 +60,13 @@ endif
 .PHONY: checkversion
 checkversion:
 ifeq ($(shell ./configure --version),$(CONFIGURE_VERSION))
-	@echo "The version of configure script matches config.mk version. Good."
+	@echo "The version of configure script matches kaldi.mk version. Good."
 else
-	$(error The config.mk file was generated using a different version of configure script. Run the configure script again.)
+	@echo ""
+	@echo "The kaldi.mk file was generated using a different version of configure script. Please rerun the configure again"
+	@test -f ./kaldi.mk && echo  "Hint: Previous configure command line: " && head -n 2 ./kaldi.mk | grep configure | sed 's/^# *//g'
+	@echo ""
+	@false
 endif
 
 biglib: $(SUBDIRS_LIB)
@@ -54,7 +76,7 @@ ifeq ($(shell uname), Darwin)
 else
 ifeq ($(shell uname), Linux)
 	#$(warning the following command will probably fail, in that case add -fPIC to your CXXFLAGS and remake all)
-	$(CXX) -shared -o $(KALDILIBDIR)/libkaldi.so -Wl,-soname=libkaldi.so,--whole-archive  $(SUBDIRS_LIB:=/kaldi-*.a) -Wl,--no-whole-archive
+	$(CXX) -shared -o $(KALDILIBDIR)/$(KALDI_SONAME) -Wl,-soname=$(KALDI_SONAME),--whole-archive  $(SUBDIRS_LIB:=/kaldi-*.a) $(LDLIBS) -Wl,--no-whole-archive
 else
 	$(error Dynamic libraries not supported on this platform. Run configure with --static flag. )
 endif
@@ -75,29 +97,21 @@ endif
 endif
 endif
 
-config.mk:
-	@[ -f config.mk ] || { echo "config.mk does not exist; you have to run ./configure"; exit 1; }
+kaldi.mk:
+	@[ -f kaldi.mk ] || { echo "kaldi.mk does not exist; you have to run ./configure"; exit 1; }
 
 # Compile optional stuff
-ext: test_dependencies ext_depend $(SUBDIRS) $(EXT_SUBDIRS)
+ext: ext_depend $(SUBDIRS) $(EXT_SUBDIRS)
 	-echo Done
-
-ifndef OPENFST_VER
-$(error Please rerun configure: OPENFST_VER is not defined, likely config.mk was produced by older configure script.)
-endif
-# Note: OPENFST_VER is determined by configure and added to config.mk
-OPENFST_VER_NUM := $(shell echo $(OPENFST_VER) | sed 's/\./ /g' | xargs printf "%d%02d%02d")
-test_dependencies:
-ifeq ("$(shell expr $(OPENFST_VER_NUM) \< 10302)","1")
-	$(error OpenFst $(OPENFST_VER) is not supported. You now need OpenFst >= 1.3.2.)
-endif
 
 check_portaudio:
 	@[ -d ../tools/portaudio ] || ( cd ../tools;  ./install_portaudio.sh )
 
-
 clean: rmlibdir
 	-for x in $(SUBDIRS) $(EXT_SUBDIRS); do $(MAKE) -C $$x clean; done
+
+distclean: clean
+	-for x in $(SUBDIRS) $(EXT_SUBDIRS); do $(MAKE) -C $$x distclean; done
 
 test: $(addsuffix /test, $(SUBDIRS))
 
@@ -105,7 +119,7 @@ ext_test: $(addsuffix /test, $(EXT_SUBDIRS))
 
 # Define an implicit rule, expands to e.g.:
 #  base/test: base
-#     $(MAKE) -C base test 
+#     $(MAKE) -C base test
 %/test: % mklibdir
 	$(MAKE) -C $< test
 
@@ -115,6 +129,8 @@ cudavalgrind:
 valgrind:
 	-for x in $(MEMTESTDIRS); do $(MAKE) -C $$x valgrind || { echo "valgrind on $$x failed"; exit 1; }; done
 
+base/.depend.mk:
+	$(MAKE) depend
 
 depend: $(addsuffix /depend, $(SUBDIRS))
 
@@ -128,10 +144,10 @@ ext_depend: check_portaudio
 
 .PHONY: $(SUBDIRS)
 $(SUBDIRS) : mklibdir
-	$(MAKE) -C $@ 
+	$(MAKE) -C $@
 
 .PHONY: $(EXT_SUBDIRS)
-$(EXT_SUBDIRS) : mklibdir
+$(EXT_SUBDIRS) : mklibdir ext_depend
 	$(MAKE) -C $@
 
 
@@ -139,17 +155,20 @@ $(EXT_SUBDIRS) : mklibdir
 # this is necessary for correct parallel compilation
 #1)The tools depend on all the libraries
 
-fstbin featbin netbin decoderbin: \
- base cpucompute util feat fstext lm decoder lat gpucompute net
+decoderbin featbin fstbin netbin: \
+ base cpucompute decoder feat fstext gpucompute lat lm net util
 
-#2)The libraries have inter-dependencies
-base:
-cpucompute : base
-util: base cpucompute
-feat: base cpucompute util
-fstext: base util cpucompute
-lm: base util fstext
-decoder: base util cpucompute lat
-lat: base util
-gpucompute: base util cpucompute	
-net: base util cpucompute gpucompute
+
+#2)The libraries have inter-dependencies - fixed for EESEN
+base: base/.depend.mk
+matrix: base
+util: base matrix
+feat: base matrix util transform 
+transform: base util matrix 
+fstext: base util fstext matrix 
+hmm: base matrix util
+lm: base util matrix fstext
+decoder: base util matrix hmm fstext transform lat
+lat: base util hmm matrix
+cudamatrix: base util matrix
+nnet: base util hmm matrix cudamatrix

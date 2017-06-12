@@ -36,7 +36,7 @@
 #include "feat/feature-fbank.h"
 #include "feat/online-feature-itf.h"
 
-namespace eesen {
+namespace kaldi {
 /// @addtogroup  onlinefeat OnlineFeatureExtraction
 /// @{
 
@@ -538,6 +538,6 @@ class OnlineAppendFeature: public OnlineFeatureInterface {
 };
 
 /// @} End of "addtogroup onlinefeat"
-}  // namespace eesen
+}  // namespace kaldi
 
 #endif  // KALDI_FEAT_ONLINE_FEATURE_H_

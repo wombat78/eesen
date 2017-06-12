@@ -21,7 +21,7 @@
 #include "lat/lattice-functions.h"
 #include "lat/determinize-lattice-pruned.h"
 
-namespace eesen {
+namespace kaldi {
 
 BaseFloat SentenceLevelConfidence(const CompactLattice &clat,
                                   int32 *num_paths,
@@ -114,4 +114,4 @@ BaseFloat SentenceLevelConfidence(const Lattice &lat,
 
 
 
-}  // namespace eesen
+}  // namespace kaldi

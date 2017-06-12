@@ -27,9 +27,9 @@
 
 int main(int argc, char *argv[]) {
   try {
-    using namespace eesen;
+    using namespace kaldi;
     using namespace fst;
-    using eesen::int32;
+    using kaldi::int32;
 
     const char *usage =
         "Determinizes in the log semiring\n"

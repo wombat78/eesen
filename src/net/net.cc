@@ -28,7 +28,7 @@
 #include "net/utils-functions.h"
 
 
-namespace eesen {
+namespace kaldi {
 
 Net::Net(const Net& other) {
   // copy the layers
@@ -419,4 +419,4 @@ void Net::SetTrainOptions(const NetTrainOptions& opts) {
   }
 }
 
-} // namespace eesen
+} // namespace kaldi

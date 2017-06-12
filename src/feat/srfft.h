@@ -30,7 +30,7 @@
 #include "cpucompute/vector.h"
 #include "cpucompute/matrix.h"
 
-namespace eesen {
+namespace kaldi {
 
 /// @addtogroup matrix_funcs_misc
 /// @{
@@ -125,7 +125,7 @@ class SplitRadixRealFft: private SplitRadixComplexFft<Real> {
 
 /// @} end of "addtogroup matrix_funcs_misc"
 
-} // end namespace eesen
+} // end namespace kaldi
 
 
 #endif

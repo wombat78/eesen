@@ -26,7 +26,7 @@
 
 #include "cpucompute/vector.h"
 
-namespace eesen {
+namespace kaldi {
 
 
 /**

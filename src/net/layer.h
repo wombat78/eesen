@@ -32,7 +32,7 @@
 
 #include <iostream>
 
-namespace eesen {
+namespace kaldi {
 
 /**
  * Abstract class, building block of the network.
@@ -198,7 +198,7 @@ inline void Layer::Backpropagate(const CuMatrixBase<BaseFloat> &in,
   BackpropagateFnc(in, out, out_diff, in_diff);
 }
 
-} // namespace eesen
+} // namespace kaldi
 
 
 #endif

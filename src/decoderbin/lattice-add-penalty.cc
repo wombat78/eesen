@@ -21,8 +21,8 @@
 #include "lat/lattice-functions.h"
 
 int main(int argc, char *argv[]) {
-  using namespace eesen;
-  typedef eesen::int64 int64;
+  using namespace kaldi;
+  typedef kaldi::int64 int64;
   try {
     const char *usage =
         "Add word insertion penalty to the lattice.\n"

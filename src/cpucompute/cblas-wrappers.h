@@ -29,7 +29,7 @@
 // Do not include this file directly.  It is to be included
 // by .cc files in this directory.
 
-namespace eesen {
+namespace kaldi {
 
 
 inline void cblas_Xcopy(const int N, const float *X, const int incX, float *Y,
@@ -485,6 +485,6 @@ inline void clapack_Xgetri(MatrixIndexT num_rows, double *Mdata, MatrixIndexT st
 #endif
 
 }
-// namespace eesen
+// namespace kaldi
 
 #endif

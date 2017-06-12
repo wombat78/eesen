@@ -18,10 +18,13 @@
 // See the Apache 2 License for the specific language governing permissions and
 // limitations under the License.
 
+#include <vector>
 #include "lat/sausages.h"
 #include "lat/lattice-functions.h"
 
-namespace eesen {
+using namespace std;
+
+namespace kaldi {
 
 // this is Figure 6 in the paper.
 void MinimumBayesRisk::MbrDecode() {
@@ -273,7 +276,7 @@ void MinimumBayesRisk::PrepareLatticeAndInitStats(CompactLattice *clat) {
   // paper (i.e. just one final state).
   
   // Topologically sort the lattice, if not already sorted.
-  eesen::uint64 props = clat->Properties(fst::kFstProperties, false);
+  kaldi::uint64 props = clat->Properties(fst::kFstProperties, false);
   if (!(props & fst::kTopSorted)) {
     if (fst::TopSort(clat) == false)
       KALDI_ERR << "Cycles detected in lattice.";
@@ -361,4 +364,4 @@ MinimumBayesRisk::MinimumBayesRisk(const CompactLattice &clat_in,
   MbrDecode();
 }
 
-}  // namespace eesen
+}  // namespace kaldi

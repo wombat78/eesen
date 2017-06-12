@@ -44,7 +44,7 @@
 } 
 
 
-namespace eesen {
+namespace kaldi {
 
 /** Number of blocks in which the task of size 'size' is splitted **/
 inline int32 n_blocks(int32 size, int32 block_size) { 
@@ -57,7 +57,7 @@ cublasOperation_t KaldiTransToCuTrans(MatrixTransposeType kaldi_trans);
 
 #endif // HAVE_CUDA
 
-namespace eesen {
+namespace kaldi {
 // Some forward declarations, needed for friend declarations.
 template<typename Real> class CuVectorBase;
 template<typename Real> class CuVector;

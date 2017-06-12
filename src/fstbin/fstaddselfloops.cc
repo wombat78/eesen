@@ -35,9 +35,9 @@
 
 int main(int argc, char *argv[]) {
   try {
-    using namespace eesen;
+    using namespace kaldi;
     using namespace fst;
-    using eesen::int32;
+    using kaldi::int32;
 
     const char *usage =
         "Adds self-loops to states of an FST to propagate disambiguation symbols through it\n"
@@ -66,12 +66,12 @@ int main(int argc, char *argv[]) {
     std::vector<int32> disambig_in;
     if (!ReadIntegerVectorSimple(disambig_in_rxfilename, &disambig_in))
       KALDI_ERR << "fstaddselfloops: Could not read disambiguation symbols from "
-                 << eesen::PrintableRxfilename(disambig_in_rxfilename);
+                 << kaldi::PrintableRxfilename(disambig_in_rxfilename);
     
     std::vector<int32> disambig_out;
     if (!ReadIntegerVectorSimple(disambig_out_rxfilename, &disambig_out))
       KALDI_ERR << "fstaddselfloops: Could not read disambiguation symbols from "
-                << eesen::PrintableRxfilename(disambig_out_rxfilename);
+                << kaldi::PrintableRxfilename(disambig_out_rxfilename);
 
     if (disambig_in.size() != disambig_out.size())
       KALDI_ERR << "fstaddselfloops: mismatch in size of disambiguation symbols";

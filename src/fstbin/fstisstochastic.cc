@@ -23,6 +23,7 @@
 #include "util/parse-options.h"
 #include "fst/fstlib.h"
 #include "fstext/fstext-utils.h"
+#include "fstext/kaldi-fst-io.h"
 
 // e.g. of test:
 // echo " 0 0" | fstcompile | fstisstochastic
@@ -41,9 +42,9 @@
 
 int main(int argc, char *argv[]) {
   try {
-    using namespace eesen;
+    using namespace kaldi;
     using namespace fst;
-    using eesen::int32;
+    using kaldi::int32;
 
     const char *usage =
         "Checks whether an FST is stochastic and exits with success if so.\n"

@@ -28,7 +28,7 @@
 #include "cpucompute/matrix-inl.h"
 #include "feat/srfft.h"
 
-namespace eesen {
+namespace kaldi {
 /// @addtogroup  feat FeatureExtraction
 /// @{
 
@@ -151,7 +151,7 @@ class Plp {
 
 /// @} End of "addtogroup feat"
 
-}  // namespace eesen
+}  // namespace kaldi
 
 
 #endif  // KALDI_FEAT_FEATURE_PLP_H_

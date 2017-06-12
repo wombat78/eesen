@@ -30,7 +30,7 @@
 #include "base/kaldi-error.h"
 #include "feat/mel-computations.h"
 
-namespace eesen {
+namespace kaldi {
 /// @addtogroup  feat FeatureExtraction
 /// @{
 
@@ -346,7 +346,7 @@ void SlidingWindowCmn(const SlidingWindowCmnOptions &opts,
 
 
 /// @} End of "addtogroup feat"
-}  // namespace eesen
+}  // namespace kaldi
 
 
 

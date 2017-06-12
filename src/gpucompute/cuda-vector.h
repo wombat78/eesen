@@ -31,7 +31,7 @@
 #include "gpucompute/cuda-value.h"
 #include "gpucompute/cuda-math.h"
 
-namespace eesen {
+namespace kaldi {
 
 template<typename Real> class CuMatrixBase;
 

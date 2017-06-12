@@ -22,7 +22,7 @@
 #include "lat/kaldi-lattice.h"
 #include "fst/script/print-impl.h"
 
-namespace eesen {
+namespace kaldi {
 
 /// Converts lattice types if necessary, deleting its input.
 template<class OrigWeightType>
@@ -75,15 +75,9 @@ bool WriteCompactLattice(std::ostream &os, bool binary,
     // on its own line.
     os << '\n';
     bool acceptor = true, write_one = false;
-#ifdef HAVE_OPENFST_GE_10400
     fst::FstPrinter<CompactLatticeArc> printer(t, t.InputSymbols(),
                                                t.OutputSymbols(),
                                                NULL, acceptor, write_one, "\t");
-#else
-    fst::FstPrinter<CompactLatticeArc> printer(t, t.InputSymbols(),
-                                               t.OutputSymbols(),
-                                               NULL, acceptor, write_one);
-#endif
     printer.Print(&os, "<unknown>");
     if (os.fail())
       KALDI_WARN << "Stream failure detected.";
@@ -406,15 +400,9 @@ bool WriteLattice(std::ostream &os, bool binary, const Lattice &t) {
     // on its own line.
     os << '\n';
     bool acceptor = false, write_one = false;
-#ifdef HAVE_OPENFST_GE_10400
     fst::FstPrinter<LatticeArc> printer(t, t.InputSymbols(),
                                         t.OutputSymbols(),
                                         NULL, acceptor, write_one, "\t");
-#else
-    fst::FstPrinter<LatticeArc> printer(t, t.InputSymbols(),
-                                        t.OutputSymbols(),
-                                        NULL, acceptor, write_one);
-#endif
     printer.Print(&os, "<unknown>");
     if (os.fail())
       KALDI_WARN << "Stream failure detected.";
@@ -515,4 +503,4 @@ bool LatticeHolder::Read(std::istream &is) {
 
 
 
-} // end namespace eesen
+} // end namespace kaldi

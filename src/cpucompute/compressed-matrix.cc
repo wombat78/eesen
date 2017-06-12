@@ -21,7 +21,7 @@
 #include "cpucompute/compressed-matrix.h"
 #include <algorithm>
 
-namespace eesen {
+namespace kaldi {
 
 //static 
 MatrixIndexT CompressedMatrix::DataSize(const GlobalHeader &header) {
@@ -687,4 +687,4 @@ CompressedMatrix &CompressedMatrix::operator = (const CompressedMatrix &mat) {
 }
 
 
-}  // namespace eesen
+}  // namespace kaldi

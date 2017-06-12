@@ -24,7 +24,7 @@
 
 int main(int argc, char *argv[]) {
   try {
-    using namespace eesen;
+    using namespace kaldi;
 
     const char *usage =
         "Splice features with left and right context (e.g. prior to LDA)\n"

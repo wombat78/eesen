@@ -25,6 +25,7 @@
 #include "fst/fstlib.h"
 #include "fstext/determinize-star.h"
 #include "fstext/fstext-utils.h"
+#include "fstext/kaldi-fst-io.h"
 
 
 /* some test  examples:
@@ -34,9 +35,9 @@
 
 int main(int argc, char *argv[]) {
   try {
-    using namespace eesen;
+    using namespace kaldi;
     using namespace fst;
-    using eesen::int32;
+    using kaldi::int32;
 
     const char *usage =
         "Minimizes FST after encoding [similar to fstminimize, but no weight-pushing]\n"

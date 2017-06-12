@@ -28,8 +28,8 @@
 
 
 int main(int argc, char *argv[]) {
-  using namespace eesen;
-  typedef eesen::int32 int32;
+  using namespace kaldi;
+  typedef kaldi::int32 int32;
   try {
     const char *usage =
         "Perform a forward pass through the network for classification/feature extraction.\n"
@@ -60,8 +60,8 @@ int main(int argc, char *argv[]) {
         feature_rspecifier = po.GetArg(2),
         feature_wspecifier = po.GetArg(3);
         
-    using namespace eesen;
-    typedef eesen::int32 int32;
+    using namespace kaldi;
+    typedef kaldi::int32 int32;
 
     //Select the GPU
 #if HAVE_CUDA==1
@@ -76,7 +76,7 @@ int main(int argc, char *argv[]) {
     // outputs for ASR decoding
     ClassPrior class_prior(prior_opts);
 
-    eesen::int64 tot_t = 0;   // Keep track of how many frames/data points have been processed
+    kaldi::int64 tot_t = 0;   // Keep track of how many frames/data points have been processed
 
     SequentialBaseFloatMatrixReader feature_reader(feature_rspecifier);
     BaseFloatMatrixWriter feature_writer(feature_wspecifier);
@@ -122,7 +122,7 @@ int main(int argc, char *argv[]) {
               << " (fps " << tot_t/time.Elapsed() << ")"; 
 
 #if HAVE_CUDA==1
-    if (eesen::g_kaldi_verbose_level >= 1) {
+    if (kaldi::g_kaldi_verbose_level >= 1) {
       CuDevice::Instantiate().PrintProfile();
     }
 #endif

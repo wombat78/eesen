@@ -39,7 +39,7 @@
 #include "base/kaldi-error.h"
 #include "util/common-utils.h"
 
-namespace eesen {
+namespace kaldi {
 
 
 /** 

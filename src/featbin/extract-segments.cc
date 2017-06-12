@@ -34,7 +34,7 @@
 */
 int main(int argc, char *argv[]) {
   try {
-    using namespace eesen;
+    using namespace kaldi;
     
     const char *usage =
         "Extract segments from a large audio file in WAV format.\n"

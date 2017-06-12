@@ -27,7 +27,7 @@
 #include "gpucompute/cuda-vector.h"
 #include "gpucompute/cuda-array.h"
 
-namespace eesen {
+namespace kaldi {
 
 class CE {
  public:
@@ -76,7 +76,7 @@ class CE {
 
 };
 
-} // namespace eesen
+} // namespace kaldi
 
 #endif
 

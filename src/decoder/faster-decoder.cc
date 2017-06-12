@@ -20,7 +20,7 @@
 
 #include "decoder/faster-decoder.h"
 
-namespace eesen {
+namespace kaldi {
 
 
 FasterDecoder::FasterDecoder(const fst::Fst<fst::StdArc> &fst,
@@ -353,4 +353,4 @@ void FasterDecoder::ClearToks(Elem *list) {
   }
 }
 
-} // end namespace eesen.
+} // end namespace kaldi.

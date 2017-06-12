@@ -29,7 +29,7 @@
 #include "fstext/fstext-lib.h"
 #include "lat/kaldi-lattice.h"
 
-namespace eesen {
+namespace kaldi {
 
 /// Caution: this function is not the only way to get confidences in Kaldi.
 /// This only gives you sentence-level (utterance-level) confidence.  You can
@@ -72,6 +72,6 @@ BaseFloat SentenceLevelConfidence(const Lattice &lat,
 
 
 
-}  // namespace eesen
+}  // namespace kaldi
 
 #endif  // KALDI_LAT_CONFIDENCE_H_

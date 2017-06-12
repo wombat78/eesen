@@ -26,7 +26,7 @@
 #include "util/text-utils.h"
 #include "cpucompute/matrix.h"
 
-namespace eesen {
+namespace kaldi {
 
 /// \addtogroup holders
 /// @{
@@ -793,7 +793,7 @@ template<int kFeatDim> class SphinxMatrixHolder {
 
 /// @} end "addtogroup holders"
 
-} // end namespace eesen
+} // end namespace kaldi
 
 
 

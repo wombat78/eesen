@@ -23,7 +23,7 @@
 #include "cpucompute/matrix.h"
 #include "feat/cmvn.h"
 
-namespace eesen {
+namespace kaldi {
 
 bool AccCmvnStatsWrapper(std::string utt,
                          const MatrixBase<BaseFloat> &feats,
@@ -53,8 +53,8 @@ bool AccCmvnStatsWrapper(std::string utt,
 
 int main(int argc, char *argv[]) {
   try {
-    using namespace eesen;
-    using eesen::int32;
+    using namespace kaldi;
+    using kaldi::int32;
 
     const char *usage =
         "Compute cepstral mean and variance normalization statistics\n"

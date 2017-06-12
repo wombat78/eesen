@@ -21,7 +21,7 @@
 #ifndef KALDI_BASE_KALDI_TYPES_H_
 #define KALDI_BASE_KALDI_TYPES_H_ 1
 
-namespace eesen {
+namespace kaldi {
 // TYPEDEFS ..................................................................
 #if (KALDI_DOUBLEPRECISION != 0)
 typedef double  BaseFloat;
@@ -31,7 +31,7 @@ typedef float   BaseFloat;
 }
 
 #ifdef _MSC_VER
-namespace eesen {
+namespace kaldi {
 typedef unsigned __int16 uint16;
 typedef unsigned __int32 uint32;
 typedef __int16          int16;
@@ -49,7 +49,7 @@ typedef double        double64;
 // we find in the future lacks stdint.h
 #include <stdint.h>
 
-namespace eesen {
+namespace kaldi {
 typedef uint16_t        uint16;
 typedef uint32_t        uint32;
 typedef uint64_t        uint64;
@@ -58,7 +58,7 @@ typedef int32_t         int32;
 typedef int64_t         int64;
 typedef float           float32;
 typedef double         double64;
-}  // end namespace eesen
+}  // end namespace kaldi
 #endif
 
 #endif  // KALDI_BASE_KALDI_TYPES_H_

@@ -21,8 +21,8 @@
 
 int main(int argc, char *argv[]) {
   try {
-    using namespace eesen;
-    typedef eesen::int32 int32;
+    using namespace kaldi;
+    typedef kaldi::int32 int32;
 
     const char *usage =
         "Convert model format to the non-parallel version. This only involves changes the layer marker \n"

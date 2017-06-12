@@ -25,7 +25,7 @@
 
 int main(int argc, char *argv[]) {
   try {
-    using namespace eesen;
+    using namespace kaldi;
 
     const char *usage =
         "Copy features [and possibly change format]\n"

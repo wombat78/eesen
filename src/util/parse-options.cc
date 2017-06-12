@@ -33,7 +33,7 @@
 #include "util/text-utils.h"
 #include "base/kaldi-common.h"
 
-namespace eesen {
+namespace kaldi {
 
 
 ParseOptions::ParseOptions(const std::string &prefix,
@@ -693,4 +693,4 @@ template void ParseOptions::RegisterCommon(const std::string &name,
                             std::string *ptr,
                             const std::string &doc, bool is_standard);
 
-}  // namespace eesen
+}  // namespace kaldi

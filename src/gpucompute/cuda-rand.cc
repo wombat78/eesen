@@ -25,7 +25,7 @@
 #include "gpucompute/cuda-rand.h"
 #include "gpucompute/cuda-randkernels-wrappers.h"
 
-namespace eesen {
+namespace kaldi {
 
 
 template<typename Real> 
@@ -172,7 +172,7 @@ template<typename Real> void CuRand<Real>::BinarizeProbs(const CuMatrix<Real> &p
   {
     for(int32 r=0; r<states->num_rows_; r++) {
       for(int32 c=0; c<states->num_cols_; c++) {
-        states->Mat()(r, c) = ((eesen::RandUniform() < probs.Mat()(r, c))? 1 : 0 );
+        states->Mat()(r, c) = ((kaldi::RandUniform() < probs.Mat()(r, c))? 1 : 0 );
       }
     }
   }

@@ -21,7 +21,7 @@
 #include "base/kaldi-common.h"
 #include "util/edit-distance.h"
 
-namespace eesen {
+namespace kaldi {
 
 void TestEditDistance() {
 
@@ -251,10 +251,10 @@ void TestLevenshteinAlignment() {
   }
 }
 
-} // end namespace eesen
+} // end namespace kaldi
 
 int main() {
-  using namespace eesen;
+  using namespace kaldi;
   TestEditDistance();
   TestEditDistanceString();
   TestEditDistance2();

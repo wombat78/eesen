@@ -24,7 +24,7 @@
 #include "gpucompute/cuda-vector.h"
 #include "gpucompute/cuda-array.h"
 
-namespace eesen {
+namespace kaldi {
 
 class Ctc {
  public:
@@ -80,6 +80,6 @@ class Ctc {
   CuMatrix<BaseFloat> ctc_err_;      // ctc errors
 };
 
-} // namespace eesen
+} // namespace kaldi
 
 #endif

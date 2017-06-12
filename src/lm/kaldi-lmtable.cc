@@ -27,7 +27,7 @@
 #include "base/kaldi-common.h"
 #include <sstream>
 
-namespace eesen {
+namespace kaldi {
 
 // typedef fst::StdArc::StateId StateId;
 
@@ -82,7 +82,7 @@ void LmFstConverter::ConnectUnusedStates(fst::StdVectorFst *pfst) {
       connected++;
     }
   }
-  cerr << "Connected " << connected << " states without outgoing arcs." << endl;
+  std::cerr << "Connected " << connected << " states without outgoing arcs." << std::endl;
 }
 
 void LmFstConverter::AddArcsForNgramProb(
@@ -223,7 +223,7 @@ bool LmTable::ReadFstFromLmFile(std::istream &istrm,
     }
     // found, set current level
     ilev = atoi(inpline.substr(pos1+1, pos2-(pos1+1)).c_str());
-    cerr << "Processing " << ilev <<"-grams" << endl;
+    std::cerr << "Processing " << ilev <<"-grams" << std::endl;
 
     // process individual n-grams
     while (getline(istrm, inpline) && !istrm.eof()) {
@@ -340,7 +340,7 @@ void LmTable::DumpStart(ngram ng,
   // dump level by level
   for (int l = 1; l <= maxlev; l++) {
     ng.size = 0;
-    cerr << "Processing " << l << "-grams" << endl;
+    std::cerr << "Processing " << l << "-grams" << std::endl;
     DumpContinue(ng, 1, l, 0, cursize[1],
                  fst, pStateSymbs, startSent, endSent);
   }
@@ -425,5 +425,5 @@ void LmTable::DumpContinue(ngram ng, int ilev, int elev,
 
 #endif
 
-}  // end namespace eesen
+}  // end namespace kaldi
 

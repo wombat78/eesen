@@ -21,7 +21,7 @@
 
 #include "net/class-prior.h"
 
-namespace eesen {
+namespace kaldi {
 
 ClassPrior::ClassPrior(const ClassPriorOptions &opts)
     : prior_scale_(opts.prior_scale) {
@@ -86,4 +86,4 @@ void ClassPrior::SubtractOnLogpost(CuMatrixBase<BaseFloat> *llk) {
   llk->AddVecToRows(-prior_scale_, log_priors_);
 }
 
-}  // namespace eesen
+}  // namespace kaldi

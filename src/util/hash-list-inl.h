@@ -25,7 +25,7 @@
 // Do not include this file directly.  It is included by fast-hash.h
 
 
-namespace eesen {
+namespace kaldi {
 
 template<class I, class T> HashList<I, T>::HashList() {
   list_head_ = NULL;
@@ -178,6 +178,6 @@ void HashList<I, T>::InsertMore(I key, T val) {
 }
 
 
-} // end namespace eesen
+} // end namespace kaldi
 
 #endif

@@ -79,9 +79,9 @@ fstphicompose 100 a.fst g.fst | fstprint
 
 int main(int argc, char *argv[]) {
   try {
-    using namespace eesen;
+    using namespace kaldi;
     using namespace fst;
-    using eesen::int32;
+    using kaldi::int32;
     /*
       fstphicompose does composition, but treats the second FST
       specially (basically, like a backoff LM); whenever the

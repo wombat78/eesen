@@ -27,7 +27,7 @@
 #include "base/kaldi-error.h"
 #include "base/kaldi-utils.h"
 
-namespace eesen {
+namespace kaldi {
 
 // static
 void WaveData::Expect4ByteTag(std::istream &is, const char *expected) {
@@ -326,4 +326,4 @@ void WaveData::Write(std::ostream &os) const {
 }
 
 
-}  // end namespace eesen
+}  // end namespace kaldi

@@ -21,7 +21,7 @@
 #include "util/simple-options.h"
 
 
-namespace eesen {
+namespace kaldi {
 
 void SimpleOptions::Register(const std::string &name,
                              bool *value,
@@ -181,4 +181,4 @@ bool SimpleOptions::GetOptionType(const std::string &key, OptionType *type) {
 
 
 
-}  // namespace eesen
+}  // namespace kaldi

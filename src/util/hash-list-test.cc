@@ -24,7 +24,7 @@
 #include <cstdlib>
 #include <iostream>
 
-namespace eesen {
+namespace kaldi {
 
 template<class Int, class T> void TestHashList() {
   typedef typename HashList<Int, T>::Elem Elem;
@@ -89,12 +89,12 @@ template<class Int, class T> void TestHashList() {
 
 
 
-} // end namespace eesen
+} // end namespace kaldi
 
 
 
 int main() {
-  using namespace eesen;
+  using namespace kaldi;
   for (size_t i = 0;i < 3;i++) {
     TestHashList<int, unsigned int>();
     TestHashList<unsigned int, int>();

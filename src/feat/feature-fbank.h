@@ -26,7 +26,7 @@
 #include "feat/feature-functions.h"
 #include "feat/srfft.h"
 
-namespace eesen {
+namespace kaldi {
 /// @addtogroup  feat FeatureExtraction
 /// @{
 
@@ -121,7 +121,7 @@ class Fbank {
 
 
 /// @} End of "addtogroup feat"
-}  // namespace eesen
+}  // namespace kaldi
 
 
 #endif  // KALDI_FEAT_FEATURE_FBANK_H_

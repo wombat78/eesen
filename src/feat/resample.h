@@ -32,7 +32,7 @@
 #include "util/common-utils.h"
 #include "base/kaldi-error.h"
 
-namespace eesen {
+namespace kaldi {
 /// @addtogroup  feat FeatureExtraction
 /// @{
 
@@ -248,5 +248,5 @@ class LinearResample {
 
 
 /// @} End of "addtogroup feat"
-}  // namespace eesen
+}  // namespace kaldi
 #endif  // KALDI_FEAT_RESAMPLE_H_

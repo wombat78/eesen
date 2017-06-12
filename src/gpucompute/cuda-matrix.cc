@@ -40,7 +40,7 @@
 #include "gpucompute/cuda-matrix.h"
 #include "gpucompute/cublas-wrappers.h"
 
-namespace eesen {
+namespace kaldi {
 
 template<typename Real>
 void CuMatrix<Real>::Resize(MatrixIndexT rows, MatrixIndexT cols,
@@ -1228,4 +1228,4 @@ template class CuMatrixBase<float>;
 template class CuMatrixBase<double>;
 
 
-} // namespace eesen
+} // namespace kaldi

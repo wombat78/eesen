@@ -26,7 +26,7 @@
 #include "base/kaldi-common.h"
 #include "cpucompute/blas.h"
 
-namespace eesen {
+namespace kaldi {
 typedef enum {
   kTrans    = CblasTrans,
   kNoTrans = CblasNoTrans

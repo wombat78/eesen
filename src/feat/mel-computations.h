@@ -32,7 +32,7 @@
 #include "cpucompute/matrix-lib.h"
 
 
-namespace eesen {
+namespace kaldi {
 /// @addtogroup  feat FeatureExtraction
 /// @{
 
@@ -112,6 +112,6 @@ BaseFloat Durbin(int n, const BaseFloat *pAC, BaseFloat *pLP, BaseFloat *pTmp);
 void Lpc2Cepstrum(int n, const BaseFloat *pLPC, BaseFloat *pCepst);
 
 /// @} End of "addtogroup feat"
-}  // namespace eesen
+}  // namespace kaldi
 
 #endif  // KALDI_FEAT_MEL_COMPUTATIONS_H_

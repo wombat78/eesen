@@ -22,7 +22,7 @@
 #include "util/parse-options.h"
 
 
-namespace eesen {
+namespace kaldi {
 
 Plp::Plp(const PlpOptions &opts)
     : opts_(opts), feature_window_function_(opts.frame_opts), srfft_(NULL) {
@@ -265,4 +265,4 @@ void Plp::ComputeInternal(const VectorBase<BaseFloat> &wave,
 }
 
 
-}  // namespace eesen
+}  // namespace kaldi

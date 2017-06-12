@@ -21,7 +21,7 @@
 #include "base/kaldi-common.h"
 
 // testing that we get the stack trace.
-namespace eesen {
+namespace kaldi {
 
 void MyFunction2() {
   KALDI_ERR << "Ignore this error";
@@ -39,12 +39,12 @@ void UnitTestError() {
 }
 
 
-}  // end namespace eesen.
+}  // end namespace kaldi.
 
 int main() {
-  eesen::g_program_name = "/foo/bar/kaldi-error-test";
+  kaldi::g_program_name = "/foo/bar/kaldi-error-test";
   try {
-    eesen::UnitTestError();
+    kaldi::UnitTestError();
     KALDI_ASSERT(0);  // should not happen.
   } catch (std::runtime_error &r) {
     std::cout << "UnitTestError: the error we generated was: " << r.what();

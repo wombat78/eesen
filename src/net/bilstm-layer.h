@@ -23,7 +23,7 @@
 #include "net/utils-functions.h"
 #include "gpucompute/cuda-math.h"
 
-namespace eesen {
+namespace kaldi {
 
 class BiLstm : public TrainableLayer {
 public:
@@ -657,6 +657,6 @@ protected:
 
 };
 
-} // namespace eesen
+} // namespace kaldi
 
 #endif

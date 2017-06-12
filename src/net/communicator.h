@@ -22,7 +22,7 @@
 
 #include <unistd.h>
 #include "net/net.h"
-using namespace eesen; 
+using namespace kaldi; 
 
 std::string comm_done_filename(const std::string & base_done_filename, const int & job_id) {
   return base_done_filename + ".done.job" + IntToString(job_id);

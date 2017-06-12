@@ -32,7 +32,7 @@
 
 #include <sstream>
 
-namespace eesen {
+namespace kaldi {
 
 const struct Layer::key_value Layer::kMarkerMap[] = {
   { Layer::l_Affine_Transform,"<AffineTransform>" },
@@ -223,4 +223,4 @@ void Layer::WriteNonParal(std::ostream &os, bool binary) const {
   this->WriteData(os, binary);
 }
 
-} // namespace eesen
+} // namespace kaldi

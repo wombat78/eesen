@@ -22,7 +22,7 @@
 #include "base/kaldi-common.h"
 #include "util/stl-utils.h"
 
-namespace eesen {
+namespace kaldi {
 static void TestIsSorted() {
   for (int i = 0;i < 100;i++) {
     std::vector<int> vec, vec2;
@@ -243,10 +243,10 @@ void TestMergePairVectorSumming() {
 }
   
 
-} // end namespace eesen
+} // end namespace kaldi
 
 int main() {
-  using namespace eesen;
+  using namespace kaldi;
   TestIsSorted();
   TestIsSortedAndUniq();
   TestUniq();

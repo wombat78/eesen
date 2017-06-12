@@ -34,7 +34,7 @@
 #include "gpucompute/cuda-math.h"
 #include "gpucompute/cuda-rand.h"
 
-namespace eesen {
+namespace kaldi {
 
 template<typename Real>
 class CuMatrixBase {

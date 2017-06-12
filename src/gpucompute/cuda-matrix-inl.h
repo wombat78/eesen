@@ -22,7 +22,7 @@
 #ifndef KALDI_CUDAMATRIX_CU_MATRIX_INL_H_
 #define KALDI_CUDAMATRIX_CU_MATRIX_INL_H_
 
-namespace eesen {
+namespace kaldi {
 
 template<typename Real>
 inline CuSubMatrix<Real>::CuSubMatrix(const CuMatrixBase<Real> &mat,
@@ -39,7 +39,7 @@ inline CuSubMatrix<Real>::CuSubMatrix(const CuMatrixBase<Real> &mat,
                col_offset + num_cols <= mat.num_cols_);
 }
   
-} // namespace eesen
+} // namespace kaldi
 
 #endif
 

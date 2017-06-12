@@ -15,7 +15,7 @@
 #include "gpucompute/cuda-rand.h"
 #include "gpucompute/cublas-wrappers.h"
 
-namespace eesen {
+namespace kaldi {
 
 template<typename Real>
 void CuVectorBase<Real>::CopyRowsFromMat(const CuMatrixBase<Real> &mat) {

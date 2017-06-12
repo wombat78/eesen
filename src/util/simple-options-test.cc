@@ -18,7 +18,7 @@
 // limitations under the License.
 #include "util/simple-options.h"
 
-namespace eesen {
+namespace kaldi {
 
 
 void UnitTestSimpleOptions() {
@@ -78,11 +78,11 @@ void UnitTestSimpleOptions() {
 }
 
 
-}// end namespace eesen.
+}// end namespace kaldi.
 
 
 int main() {
-  using namespace eesen;
+  using namespace kaldi;
   UnitTestSimpleOptions();
   return 0;
 }

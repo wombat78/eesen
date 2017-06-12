@@ -31,7 +31,7 @@
  * In this file are C++ templated wrappers 
  * of the ANSI-C CUDA kernels
  */
-namespace eesen {
+namespace kaldi {
 
 /*********************************************************
  * base templates

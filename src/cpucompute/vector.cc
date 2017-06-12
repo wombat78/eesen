@@ -27,7 +27,7 @@
 #include "cpucompute/vector.h"
 #include "cpucompute/matrix.h"
 
-namespace eesen {
+namespace kaldi {
 
 template<typename Real> 
 Real VecVec(const VectorBase<Real> &a,
@@ -258,17 +258,17 @@ bool VectorBase<Real>::IsZero(Real cutoff) const {
 
 template<typename Real>
 void VectorBase<Real>::SetRandn() {
-  eesen::RandomState rstate;
+  kaldi::RandomState rstate;
   MatrixIndexT last = (Dim() % 2 == 1) ? Dim() - 1 : Dim();
   for (MatrixIndexT i = 0; i < last; i += 2) {
-    eesen::RandGauss2(data_ + i, data_ + i +1, &rstate);
+    kaldi::RandGauss2(data_ + i, data_ + i +1, &rstate);
   }
-  if (Dim() != last) data_[last] = static_cast<Real>(eesen::RandGauss(&rstate));
+  if (Dim() != last) data_[last] = static_cast<Real>(kaldi::RandGauss(&rstate));
 }
 
 template<typename Real>
 MatrixIndexT VectorBase<Real>::RandCategorical() const {
-  eesen::RandomState rstate;
+  kaldi::RandomState rstate;
   Real sum = this->Sum();
   KALDI_ASSERT(this->Min() >= 0.0 && sum > 0.0);
   Real r = RandUniform(&rstate) * sum;
@@ -1216,5 +1216,5 @@ template class Vector<double>;
 template class VectorBase<float>;
 template class VectorBase<double>;
 
-}  // namespace eesen
+}  // namespace kaldi
 

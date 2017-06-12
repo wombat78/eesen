@@ -27,7 +27,7 @@
 #include <cassert>
 #include "base/kaldi-types.h"
 
-namespace eesen {
+namespace kaldi {
 
 // Compute the edit-distance between two strings.
 template<class T>
@@ -56,7 +56,7 @@ int32 LevenshteinAlignment(const std::vector<T> &a,
                            T eps_symbol,
                            std::vector<std::pair<T, T> > *output);
 
-} // end namespace eesen
+} // end namespace kaldi
 
 #include "edit-distance-inl.h"
 

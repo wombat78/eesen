@@ -41,8 +41,8 @@ template<class Arc>  void TestTableMatcher(bool connect, bool left) {
   TableComposeOptions opts;
   if (left) opts.table_match_type = MATCH_OUTPUT;
   else opts.table_match_type = MATCH_INPUT;
-  opts.min_table_size = 1 + eesen::Rand() % 5;
-  opts.table_ratio = 0.25 * (eesen::Rand() % 5);
+  opts.min_table_size = 1 + kaldi::Rand() % 5;
+  opts.table_ratio = 0.25 * (kaldi::Rand() % 5);
   opts.connect = connect;
 
   ArcSort(fst1, olabel_comp);
@@ -63,34 +63,22 @@ template<class Arc>  void TestTableMatcher(bool connect, bool left) {
 
   std::cout <<"Table-Composed FST\n";
   {
-#ifdef HAVE_OPENFST_GE_10400
     FstPrinter<Arc> fstprinter(composed, NULL, NULL, NULL, false, true, "\t");
-#else
-    FstPrinter<Arc> fstprinter(composed, NULL, NULL, NULL, false, true);
-#endif
     fstprinter.Print(&std::cout, "standard output");
   }
 
   std::cout <<" Baseline-Composed FST\n";
   {
-#ifdef HAVE_OPENFST_GE_10400
     FstPrinter<Arc> fstprinter(composed_baseline, NULL, NULL, NULL, false, true, "\t");
-#else
-    FstPrinter<Arc> fstprinter(composed_baseline, NULL, NULL, NULL, false, true);
-#endif
     fstprinter.Print(&std::cout, "standard output");
   }
 
-  if ( !RandEquivalent(composed, composed_baseline, 3/*paths*/, 0.01/*delta*/, eesen::Rand()/*seed*/, 20/*path length-- max?*/)) {
+  if ( !RandEquivalent(composed, composed_baseline, 3/*paths*/, 0.01/*delta*/, kaldi::Rand()/*seed*/, 20/*path length-- max?*/)) {
     VectorFst<Arc> diff1;
     Difference(composed, composed_baseline, &diff1);
     std::cout <<" Diff1 (composed - baseline) \n";
     {
-#ifdef HAVE_OPENFST_GE_10400
-    FstPrinter<Arc> fstprinter(diff1, NULL, NULL, NULL, false, true, "\t");
-#else
-    FstPrinter<Arc> fstprinter(diff1, NULL, NULL, NULL, false, true);
-#endif
+      FstPrinter<Arc> fstprinter(diff1, NULL, NULL, NULL, false, true, "\t");
       fstprinter.Print(&std::cout, "standard output");
     }
 
@@ -99,11 +87,7 @@ template<class Arc>  void TestTableMatcher(bool connect, bool left) {
     Difference(composed_baseline, composed, &diff2);
     std::cout <<" Diff2 (baseline - composed) \n";
     {
-#ifdef HAVE_OPENFST_GE_10400
-    FstPrinter<Arc> fstprinter(diff2, NULL, NULL, NULL, false, true, "\t");
-#else
-    FstPrinter<Arc> fstprinter(diff2, NULL, NULL, NULL, false, true);
-#endif
+      FstPrinter<Arc> fstprinter(diff2, NULL, NULL, NULL, false, true, "\t");
       fstprinter.Print(&std::cout, "standard output");
     }
 
@@ -128,8 +112,8 @@ template<class Arc>  void TestTableMatcherCacheLeft(bool connect) {
 
   TableComposeOptions opts;
   opts.table_match_type = MATCH_OUTPUT;
-  opts.min_table_size = 1 + eesen::Rand() % 5;
-  opts.table_ratio = 0.25 * (eesen::Rand() % 5);
+  opts.min_table_size = 1 + kaldi::Rand() % 5;
+  opts.table_ratio = 0.25 * (kaldi::Rand() % 5);
   opts.connect = connect;
 
   TableComposeCache<Fst<Arc> > cache(opts);
@@ -159,16 +143,12 @@ template<class Arc>  void TestTableMatcherCacheLeft(bool connect) {
     std::cout << "Connect = "<< (connect?"True\n":"False\n");
 
 
-    if ( !RandEquivalent(composed, composed_baseline, 3/*paths*/, 0.01/*delta*/, eesen::Rand()/*seed*/, 100/*path length-- max?*/)) {
+    if ( !RandEquivalent(composed, composed_baseline, 3/*paths*/, 0.01/*delta*/, kaldi::Rand()/*seed*/, 100/*path length-- max?*/)) {
       VectorFst<Arc> diff1;
       Difference(composed, composed_baseline, &diff1);
       std::cout <<" Diff1 (composed - baseline) \n";
       {
-#ifdef HAVE_OPENFST_GE_10400
         FstPrinter<Arc> fstprinter(diff1, NULL, NULL, NULL, false, true, "\t");
-#else
-        FstPrinter<Arc> fstprinter(diff1, NULL, NULL, NULL, false, true);
-#endif
         fstprinter.Print(&std::cout, "standard output");
       }
 
@@ -177,11 +157,7 @@ template<class Arc>  void TestTableMatcherCacheLeft(bool connect) {
       Difference(composed_baseline, composed, &diff2);
       std::cout <<" Diff2 (baseline - composed) \n";
       {
-#ifdef HAVE_OPENFST_GE_10400
         FstPrinter<Arc> fstprinter(diff2, NULL, NULL, NULL, false, true, "\t");
-#else
-        FstPrinter<Arc> fstprinter(diff2, NULL, NULL, NULL, false, true);
-#endif
         fstprinter.Print(&std::cout, "standard output");
       }
 
@@ -207,8 +183,8 @@ template<class Arc>  void TestTableMatcherCacheRight(bool connect) {
 
   TableComposeOptions opts;
   opts.table_match_type = MATCH_INPUT;
-  opts.min_table_size = 1 + eesen::Rand() % 5;
-  opts.table_ratio = 0.25 * (eesen::Rand() % 5);
+  opts.min_table_size = 1 + kaldi::Rand() % 5;
+  opts.table_ratio = 0.25 * (kaldi::Rand() % 5);
   opts.connect = connect;
 
   TableComposeCache<Fst<Arc> > cache(opts);
@@ -237,16 +213,12 @@ template<class Arc>  void TestTableMatcherCacheRight(bool connect) {
     std::cout << "Connect = "<< (connect?"True\n":"False\n");
 
 
-    if ( !RandEquivalent(composed, composed_baseline, 5/*paths*/, 0.01/*delta*/, eesen::Rand()/*seed*/, 20/*path length-- max?*/)) {
+    if ( !RandEquivalent(composed, composed_baseline, 5/*paths*/, 0.01/*delta*/, kaldi::Rand()/*seed*/, 20/*path length-- max?*/)) {
       VectorFst<Arc> diff1;
       Difference(composed, composed_baseline, &diff1);
       std::cout <<" Diff1 (composed - baseline) \n";
       {
-#ifdef HAVE_OPENFST_GE_10400
         FstPrinter<Arc> fstprinter(diff1, NULL, NULL, NULL, false, true, "\t");
-#else
-        FstPrinter<Arc> fstprinter(diff1, NULL, NULL, NULL, false, true);
-#endif
         fstprinter.Print(&std::cout, "standard output");
       }
 
@@ -255,11 +227,7 @@ template<class Arc>  void TestTableMatcherCacheRight(bool connect) {
       Difference(composed_baseline, composed, &diff2);
       std::cout <<" Diff2 (baseline - composed) \n";
       {
-#ifdef HAVE_OPENFST_GE_10400
         FstPrinter<Arc> fstprinter(diff2, NULL, NULL, NULL, false, true, "\t");
-#else
-        FstPrinter<Arc> fstprinter(diff2, NULL, NULL, NULL, false, true);
-#endif
         fstprinter.Print(&std::cout, "standard output");
       }
 

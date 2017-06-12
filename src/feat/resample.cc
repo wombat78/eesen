@@ -25,7 +25,7 @@
 #include "cpucompute/matrix-functions.h"
 #include "feat/resample.h"
 
-namespace eesen {
+namespace kaldi {
 
 
 LinearResample::LinearResample(int32 samp_rate_in_hz,
@@ -364,4 +364,4 @@ BaseFloat ArbitraryResample::FilterFunc(BaseFloat t) const {
 }
 
 
-}  // namespace eesen
+}  // namespace kaldi

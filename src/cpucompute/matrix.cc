@@ -24,7 +24,7 @@
 #include "cpucompute/cblas-wrappers.h"
 #include "cpucompute/compressed-matrix.h"
 
-namespace eesen {
+namespace kaldi {
 
 template<typename Real>
 void MatrixBase<Real>::Invert(Real *log_det, Real *det_sign,
@@ -926,24 +926,24 @@ void MatrixBase<Real>::SetUnit() {
 
 template<typename Real>
 void MatrixBase<Real>::SetRandn() {
-  eesen::RandomState rstate;
+  kaldi::RandomState rstate;
   for (MatrixIndexT row = 0; row < num_rows_; row++) {
     Real *row_data = this->RowData(row);
     MatrixIndexT nc = (num_cols_ % 2 == 1) ? num_cols_ - 1 : num_cols_;
     for (MatrixIndexT col = 0; col < nc; col += 2) {
-      eesen::RandGauss2(row_data + col, row_data + col + 1, &rstate);
+      kaldi::RandGauss2(row_data + col, row_data + col + 1, &rstate);
     }
-    if (nc != num_cols_) row_data[nc] = static_cast<Real>(eesen::RandGauss(&rstate));
+    if (nc != num_cols_) row_data[nc] = static_cast<Real>(kaldi::RandGauss(&rstate));
   }
 }
 
 template<typename Real>
 void MatrixBase<Real>::SetRandUniform() {
-  eesen::RandomState rstate;
+  kaldi::RandomState rstate;
   for (MatrixIndexT row = 0; row < num_rows_; row++) {
     Real *row_data = this->RowData(row);
     for (MatrixIndexT col = 0; col < num_cols_; col++, row_data++) {
-      *row_data = static_cast<Real>(eesen::RandUniform(&rstate));
+      *row_data = static_cast<Real>(kaldi::RandUniform(&rstate));
     }
   }
 }
@@ -2176,5 +2176,5 @@ template class MatrixBase<double>;
 template class SubMatrix<float>;
 template class SubMatrix<double>;
 
-} // namespace eesen
+} // namespace kaldi
 

@@ -25,8 +25,8 @@
 #include "fstext/fstext-lib.h"
 
 int main(int argc, char *argv[]) {
-  using namespace eesen;
-  typedef eesen::int32 int32;  
+  using namespace kaldi;
+  typedef kaldi::int32 int32;  
   using fst::SymbolTable; 
  
   try {
@@ -70,8 +70,8 @@ int main(int argc, char *argv[]) {
       target_model_filename = po.GetArg(4);
     }
 
-    using namespace eesen;
-    typedef eesen::int32 int32;
+    using namespace kaldi;
+    typedef kaldi::int32 int32;
 
     //Select the GPU
 #if HAVE_CUDA==1
@@ -83,7 +83,7 @@ int main(int argc, char *argv[]) {
     net.Read(model_filename);
     net.SetTrainOptions(trn_opts);
 
-    eesen::int64 total_frames = 0;
+    kaldi::int64 total_frames = 0;
 
     // Initialize feature and labels readers
     SequentialBaseFloatMatrixReader feature_reader(feature_rspecifier);

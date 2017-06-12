@@ -23,7 +23,7 @@
 #include <errno.h>
 
 #include "util/kaldi-pipebuf.h"
-namespace eesen {
+namespace kaldi {
 
 #ifndef _MSC_VER // on VS, we don't need this type.
 // could replace basic_pipebuf<char> with stdio_filebuf<char>, on some platforms.
@@ -32,7 +32,7 @@ typedef basic_pipebuf<char> PipebufType;
 #endif
 }
 
-namespace eesen {
+namespace kaldi {
 
 std::string PrintableRxfilename(std::string rxfilename) {
   if (rxfilename == "" || rxfilename == "-") return "standard input";
@@ -740,4 +740,4 @@ std::istream &Input::Stream() {
 
 
 
-}  // end namespace eesen
+}  // end namespace kaldi

@@ -25,7 +25,7 @@
 #include "cpucompute/matrix-inl.h"
 #include "feat/wave-reader.h"
 
-using namespace eesen;
+using namespace kaldi;
 
 
 

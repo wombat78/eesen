@@ -22,7 +22,7 @@
 #include <fstream>
 #include "base/kaldi-common.h"
 
-namespace eesen {
+namespace kaldi {
 
 std::string CharToString(const char &c) {
   char buf[20];
@@ -45,4 +45,4 @@ bool FileExist(const char *file_name) {
 }
 
 
-}  // end namespace eesen
+}  // end namespace kaldi

@@ -27,7 +27,7 @@
 // from binary-level programs such as gmm-decode-faster.cc, gmm-align-compiled.cc, and
 // so on.
 
-namespace eesen {
+namespace kaldi {
 
 bool DecodeUtteranceLatticeFaster(
     LatticeFasterDecoder &decoder, // not const but is really an input.
@@ -43,7 +43,7 @@ bool DecodeUtteranceLatticeFaster(
     LatticeWriter *lattice_writer,
     double *like_ptr);
 
-} // end namespace eesen.
+} // end namespace kaldi.
 
 
 #endif

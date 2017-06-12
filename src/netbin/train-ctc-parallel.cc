@@ -24,12 +24,12 @@
 #include "gpucompute/cuda-device.h"
 #include "net/communicator.h"
 
-using namespace eesen;
-typedef eesen::int32 int32;
+using namespace kaldi;
+typedef kaldi::int32 int32;
 
 int main(int argc, char *argv[]) {
-  using namespace eesen;
-  typedef eesen::int32 int32;  
+  using namespace kaldi;
+  typedef kaldi::int32 int32;  
   
   try {
     const char *usage =
@@ -106,7 +106,7 @@ int main(int argc, char *argv[]) {
     net.Read(model_filename);
     net.SetTrainOptions(trn_opts);
 
-    eesen::int64 total_frames = 0;
+    kaldi::int64 total_frames = 0;
 
     // Initialize feature and labels readers
     SequentialBaseFloatMatrixReader feature_reader(feature_rspecifier);

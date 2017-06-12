@@ -23,7 +23,7 @@
 #include "net/utils-functions.h"
 #include "gpucompute/cuda-math.h"
 
-namespace eesen {
+namespace kaldi {
 
 class Lstm : public TrainableLayer {
 public:
@@ -386,6 +386,6 @@ protected:
     CuMatrix<BaseFloat> backpropagate_buf_;
 
 };
-} // namespace eesen
+} // namespace kaldi
 
 #endif

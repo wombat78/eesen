@@ -24,7 +24,7 @@
 
 #include "cpucompute/matrix-common.h"
 
-namespace eesen {
+namespace kaldi {
 
 /// @{ \addtogroup matrix_funcs_scalar
 
@@ -375,7 +375,7 @@ class MatrixBase {
   void DiffTanh(const MatrixBase<Real> &value,
                 const MatrixBase<Real> &diff);
   
-  friend Real eesen::TraceMatMat<Real>(const MatrixBase<Real> &A,
+  friend Real kaldi::TraceMatMat<Real>(const MatrixBase<Real> &A,
       const MatrixBase<Real> &B, MatrixTransposeType trans);  // tr (A B)
 
   // so it can get around const restrictions on the pointer to data_.
@@ -767,7 +767,7 @@ bool SameDim(const MatrixBase<Real> &M, const MatrixBase<Real> &N) {
 /// @} end of \addtogroup matrix_funcs_io
 
 
-}  // namespace eesen
+}  // namespace kaldi
 
 
 

@@ -26,7 +26,7 @@
 
 #include "cpucompute/matrix-common.h"
 
-namespace eesen {
+namespace kaldi {
 
 /// \addtogroup matrix_group
 /// @{
@@ -528,7 +528,7 @@ Real VecMatVec(const VectorBase<Real> &v1, const MatrixBase<Real> &M,
 /// @} End of "addtogroup matrix_funcs_scalar"
 
 
-}  // namespace eesen
+}  // namespace kaldi
 
 // we need to include the implementation
 #include "cpucompute/vector-inl.h"

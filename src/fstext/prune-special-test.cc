@@ -37,11 +37,7 @@ static void TestPruneSpecial() {
   float beam = 0.55;
 
   {
-#ifdef HAVE_OPENFST_GE_10400
     FstPrinter<Arc> fstprinter(*ifst, NULL, NULL, NULL, false, true, "\t");
-#else
-    FstPrinter<Arc> fstprinter(*ifst, NULL, NULL, NULL, false, true);
-#endif
     fstprinter.Print(&std::cout, "standard output");
     std::cout << endl;
   }
@@ -50,11 +46,7 @@ static void TestPruneSpecial() {
   VectorFst<Arc> ofst1;
   PruneSpecial<StdArc>(*ifst, &ofst1, beam);
   {
-#ifdef HAVE_OPENFST_GE_10400
     FstPrinter<Arc> fstprinter(ofst1, NULL, NULL, NULL, false, true, "\t");
-#else
-    FstPrinter<Arc> fstprinter(ofst1, NULL, NULL, NULL, false, true);
-#endif
     fstprinter.Print(&std::cout, "standard output");
     std::cout << endl;
   }
@@ -63,17 +55,13 @@ static void TestPruneSpecial() {
   VectorFst<Arc> ofst2;
   Prune(*ifst, &ofst2, beam);
   {
-#ifdef HAVE_OPENFST_GE_10400
     FstPrinter<Arc> fstprinter(ofst2, NULL, NULL, NULL, false, true, "\t");
-#else
-    FstPrinter<Arc> fstprinter(ofst2, NULL, NULL, NULL, false, true);
-#endif
     fstprinter.Print(&std::cout, "standard output");
     std::cout << endl;
   }
 
   KALDI_ASSERT(RandEquivalent(ofst1, ofst2,
-                              5/*paths*/, 0.01/*delta*/, eesen::Rand()/*seed*/,
+                              5/*paths*/, 0.01/*delta*/, kaldi::Rand()/*seed*/,
                               100/*path length-- max?*/));
 
   delete ifst;
@@ -83,7 +71,7 @@ static void TestPruneSpecial() {
 } // namespace fst
 
 int main() {
-  eesen::g_kaldi_verbose_level = 4;
+  kaldi::g_kaldi_verbose_level = 4;
   using namespace fst;
   for (int i = 0; i < 25; i++) {
     TestPruneSpecial();

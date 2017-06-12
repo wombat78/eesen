@@ -29,7 +29,7 @@
 #include "feat/resample.h"
 #include "cpucompute/matrix-functions.h"
 
-namespace eesen {
+namespace kaldi {
 
 /**
    This function processes the NCCF n to a POV feature f by applying the formula
@@ -1619,4 +1619,4 @@ void ComputeAndProcessKaldiPitch(
 }
 
 
-}  // namespace eesen
+}  // namespace kaldi

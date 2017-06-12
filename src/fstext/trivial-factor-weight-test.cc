@@ -34,7 +34,7 @@ template<class Arc>  void TestFactor() {
   typedef typename Arc::Weight Weight;
 
   VectorFst<Arc> *fst = new VectorFst<Arc>();
-  int n_syms = 2 + eesen::Rand() % 5, n_states = 3 + eesen::Rand() % 10, n_arcs = 5 + eesen::Rand() % 30, n_final = 1 + eesen::Rand()%3;  // Up to 2 unique symbols.
+  int n_syms = 2 + kaldi::Rand() % 5, n_states = 3 + kaldi::Rand() % 10, n_arcs = 5 + kaldi::Rand() % 30, n_final = 1 + kaldi::Rand()%3;  // Up to 2 unique symbols.
   cout << "Testing pre-determinize with "<<n_syms<<" symbols, "<<n_states<<" states and "<<n_arcs<<" arcs and "<<n_final<<" final states.\n";
   SymbolTable *sptr = NULL;
 
@@ -52,29 +52,25 @@ template<class Arc>  void TestFactor() {
   }
   // Set final states.
   for (size_t j = 0;j < (size_t)n_final;j++) {
-    StateId id = all_states[eesen::Rand() % n_states];
-    Weight weight = (Weight)(0.33*(eesen::Rand() % 5) );
+    StateId id = all_states[kaldi::Rand() % n_states];
+    Weight weight = (Weight)(0.33*(kaldi::Rand() % 5) );
     printf("calling SetFinal with %d and %f\n", id, weight.Value());
     fst->SetFinal(id, weight);
   }
   // Create arcs.
   for (size_t i = 0;i < (size_t)n_arcs;i++) {
     Arc a;
-    a.nextstate = all_states[eesen::Rand() % n_states];
-    a.ilabel = all_syms[eesen::Rand() % n_syms];
-    a.olabel = all_syms[eesen::Rand() % n_syms];  // same input+output vocab.
-    a.weight = (Weight) (0.33*(eesen::Rand() % 2));
-    StateId start_state = all_states[eesen::Rand() % n_states];
+    a.nextstate = all_states[kaldi::Rand() % n_states];
+    a.ilabel = all_syms[kaldi::Rand() % n_syms];
+    a.olabel = all_syms[kaldi::Rand() % n_syms];  // same input+output vocab.
+    a.weight = (Weight) (0.33*(kaldi::Rand() % 2));
+    StateId start_state = all_states[kaldi::Rand() % n_states];
     fst->AddArc(start_state, a);
   }
 
   std::cout <<" printing before trimming\n";
   {
-#ifdef HAVE_OPENFST_GE_10400
     FstPrinter<Arc> fstprinter(*fst, sptr, sptr, NULL, false, true, "\t");
-#else
-    FstPrinter<Arc> fstprinter(*fst, sptr, sptr, NULL, false, true);
-#endif
     fstprinter.Print(&std::cout, "standard output");
   }
   // Trim resulting FST.
@@ -82,11 +78,7 @@ template<class Arc>  void TestFactor() {
 
   std::cout <<" printing after trimming\n";
   {
-#ifdef HAVE_OPENFST_GE_10400
     FstPrinter<Arc> fstprinter(*fst, sptr, sptr, NULL, false, true, "\t");
-#else
-    FstPrinter<Arc> fstprinter(*fst, sptr, sptr, NULL, false, true);
-#endif
     fstprinter.Print(&std::cout, "standard output");
   }
 
@@ -97,11 +89,7 @@ template<class Arc>  void TestFactor() {
 
   std::cout <<" printing after predeterminization\n";
   {
-#ifdef HAVE_OPENFST_GE_10400
     FstPrinter<Arc> fstprinter(*fst, sptr, sptr, NULL, false, true, "\t");
-#else
-    FstPrinter<Arc> fstprinter(*fst, sptr, sptr, NULL, false, true);
-#endif
     fstprinter.Print(&std::cout, "standard output");
   }
 
@@ -117,15 +105,11 @@ template<class Arc>  void TestFactor() {
 
   std::cout <<" printing after double-epsilon removal\n";
   {
-#ifdef HAVE_OPENFST_GE_10400
     FstPrinter<Arc> fstprinter(*fst, sptr, sptr, NULL, false, true, "\t");
-#else
-    FstPrinter<Arc> fstprinter(*fst, sptr, sptr, NULL, false, true);
-#endif
     fstprinter.Print(&std::cout, "standard output");
   }
   VectorFst<Arc> ofst_star;
-  
+
   {
     printf("Converting to Gallic semiring");
     VectorFst<GallicArc<Arc> > gallic_fst;
@@ -140,60 +124,35 @@ template<class Arc>  void TestFactor() {
 
     {
       std::cout <<" printing gallic FST\n";
-#ifdef HAVE_OPENFST_GE_10400
       FstPrinter<GallicArc<Arc> >  fstprinter(gallic_fst, sptr, sptr, NULL, false, true, "\t");
-#else
-      FstPrinter<GallicArc<Arc> >  fstprinter(gallic_fst, sptr, sptr, NULL, false, true);
-#endif
       fstprinter.Print(&std::cout, "standard output");
     }
 
 
     // Map(ofst_star, &gallic_fst, ToGallicMapper<Arc, STRING_LEFT>());
-    
+
     printf("Converting gallic back to regular\n");
-#ifdef HAVE_OPENFST_GE_10400
     TrivialFactorWeightFst< GallicArc<Arc, GALLIC_LEFT>, GallicFactor<typename Arc::Label,
         typename Arc::Weight, GALLIC_LEFT> > fwfst(gallic_fst);
-#else
-    TrivialFactorWeightFst< GallicArc<Arc, STRING_LEFT>, GallicFactor<typename Arc::Label,
-        typename Arc::Weight, STRING_LEFT> > fwfst(gallic_fst);
-#endif
     {
       std::cout <<" printing factor-weight FST\n";
-#ifdef HAVE_OPENFST_GE_10400
       FstPrinter<GallicArc<Arc> >  fstprinter(fwfst, sptr, sptr, NULL, false, true, "\t");
-#else
-      FstPrinter<GallicArc<Arc> >  fstprinter(fwfst, sptr, sptr, NULL, false, true);
-#endif
       fstprinter.Print(&std::cout, "standard output");
     }
 
-#ifdef HAVE_OPENFST_GE_10400
     Map(fwfst, &ofst_star, FromGallicMapper<Arc, GALLIC_LEFT>());
-#else
-    Map(fwfst, &ofst_star, FromGallicMapper<Arc, STRING_LEFT>());
-#endif
 
     {
       std::cout <<" printing after converting back to regular FST\n";
-#ifdef HAVE_OPENFST_GE_10400
       FstPrinter<Arc> fstprinter(ofst_star, sptr, sptr, NULL, false, true, "\t");
-#else
-      FstPrinter<Arc> fstprinter(ofst_star, sptr, sptr, NULL, false, true);
-#endif
       fstprinter.Print(&std::cout, "standard output");
     }
 
 
     VectorFst<GallicArc<Arc> > new_gallic_fst;
-#ifdef HAVE_OPENFST_GE_10400
     Map(ofst_star, &new_gallic_fst, ToGallicMapper<Arc, GALLIC_LEFT>());
-#else
-    Map(ofst_star, &new_gallic_fst, ToGallicMapper<Arc, STRING_LEFT>());
-#endif
 
-    assert(RandEquivalent(gallic_fst, new_gallic_fst, 5/*paths*/, 0.01/*delta*/, eesen::Rand()/*seed*/, 100/*path length-- max?*/));
+    assert(RandEquivalent(gallic_fst, new_gallic_fst, 5/*paths*/, 0.01/*delta*/, kaldi::Rand()/*seed*/, 100/*path length-- max?*/));
 
   }
 
@@ -212,9 +171,9 @@ template<class Arc, class inttype> void TestStringRepository() {
   vector<inttype> ids(N);
 
   for (size_t i = 0;i < N;i++) {
-    size_t len = eesen::Rand() % 4;
+    size_t len = kaldi::Rand() % 4;
     vector<Label> vec;
-    for (size_t j = 0;j < len;j++) vec.push_back( (eesen::Rand()%10) + 150*(eesen::Rand()%2));  // make it have reasonable range.
+    for (size_t j = 0;j < len;j++) vec.push_back( (kaldi::Rand()%10) + 150*(kaldi::Rand()%2));  // make it have reasonable range.
     if (i < 500 && vec.size() == 0) ids[i] = sr.IdOfEmpty();
     else if (i < 500 && vec.size() == 1) ids[i] = sr.IdOfLabel(vec[0]);
     else ids[i] = sr.IdOfSeq(vec);
@@ -232,7 +191,7 @@ template<class Arc, class inttype> void TestStringRepository() {
     if (strings[i].size() == 1) assert(ids[i] == sr.IdOfLabel(strings[i][0]));
 
     if (sizeof(inttype) != 1) {
-      size_t prefix_len = eesen::Rand() % (strings[i].size() + 1);
+      size_t prefix_len = kaldi::Rand() % (strings[i].size() + 1);
       inttype s2 = sr.RemovePrefix(ids[i], prefix_len);
       vector<Label> vec2;
       sr.SeqOfId(s2, &vec2);
@@ -251,5 +210,3 @@ int main() {
     fst::TestFactor<fst::StdArc>();
   }
 }
-
-

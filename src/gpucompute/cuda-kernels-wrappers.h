@@ -26,7 +26,7 @@
 
 //#include "base/kaldi-error.h"
 #include "gpucompute/cuda-kernels.h"
-namespace eesen {
+namespace kaldi {
 
 /*
  * CUDA functions for Matrix 
@@ -277,7 +277,7 @@ inline void cuda_compute_ctc_error_multiple_sequence(dim3 Gr, dim3 Bl, double *e
   cudaD_compute_ctc_error_multiple_sequence(Gr, Bl, error, seq_num, dim_error, alpha, beta, dim_alpha, prob, labels, dim_label_stride, seq_lengths, pzx);
 }
 
-} // namespace eesen
+} // namespace kaldi
 
 
 

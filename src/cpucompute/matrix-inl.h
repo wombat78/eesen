@@ -22,7 +22,7 @@
 
 #include "cpucompute/vector.h"
 
-namespace eesen {
+namespace kaldi {
 
 /// Empty constructor
 template<typename Real>
@@ -56,7 +56,7 @@ inline std::istream & operator >> (std::istream & is, MatrixBase<Real> & M) {
   return is;
 }
 
-}// namespace eesen
+}// namespace kaldi
 
 
 #endif  // KALDI_MATRIX_KALDI_MATRIX_INL_H_

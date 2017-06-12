@@ -60,9 +60,9 @@
 
 int main(int argc, char *argv[]) {
   try {
-    using namespace eesen;
+    using namespace kaldi;
     using namespace fst;
-    using eesen::int32;
+    using kaldi::int32;
     /*
         # fstcomposecontext composes efficiently with a context fst
         # that it generates.  Without --disambig-syms specified, it

@@ -30,7 +30,7 @@
 
 #include "base/timer.h"
 
-namespace eesen {
+namespace kaldi {
 
 
 template<typename T>
@@ -205,6 +205,6 @@ void CuArray<T>::CopyFromArray(const CuArray<T> &src) {
 }
 
 
-} // namespace eesen
+} // namespace kaldi
 
 #endif

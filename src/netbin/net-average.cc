@@ -23,8 +23,8 @@
 
 int main(int argc, char *argv[]) {
   try {
-    using namespace eesen;
-    typedef eesen::int32 int32;
+    using namespace kaldi;
+    typedef kaldi::int32 int32;
 
     const char *usage =
         "Average network parameters over a number of nets\n"
